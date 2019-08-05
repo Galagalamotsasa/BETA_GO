@@ -4,9 +4,9 @@
 <head>
 <meta charset="UTF-8">
 <title>BETA-GO BOARD LIST</title>
-<link href="./Resoureces/css/bootstrap.min.css" type="text/css" rel="stylesheet"/>
-<script src="./Resoureces/js/jquery.min.js"></script>
-<script src="./Resoureces/js/bootstrap.min.js"></script>
+<link href="css/bootstrap.min.css" type="text/css" rel="stylesheet" />
+<script src="js/jquery.min.js"></script>
+<script src="js/bootstrap.min.js"></script>
 </head>
 
 <body>

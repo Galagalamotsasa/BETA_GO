@@ -3,26 +3,18 @@
 <html>
 <head>
 <meta charset="UTF-8">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
 <title>BETA-GO BOARD LIST</title>
-<link href="./Resoureces/css/bootstrap.min.css" type="text/css" rel="stylesheet"/>
-<script src="./Resoureces/js/jquery.min.js"></script>
-<script src="./Resoureces/js/bootstrap.min.js"></script>
+<link href="./css/bootstrap.min.css" type="text/css" rel="stylesheet"/>
+<script src="./js/jquery.min.js"></script>
+<script src="./js/bootstrap.min.js"></script>
 </head>
 
 <body>
-<nav class="navbar navbar-expand-sm bg-dark navbar-dark">
-		<!-- Brand/logo -->
-		<a class="navbar-brand" href="#">Home</a>
 
-		<!-- Links -->
-		<ul class="navbar-nav">
-			<li class="nav-item"><a class="nav-link"
-				href="member/registerMember.jsp">회원가입</a></li>
-			<li class="nav-item"><a class="nav-link" href="#">로그인</a></li>
-			<li class="nav-item"><a class="nav-link" href="admin/adminHome.jsp">관리자페이지</a></li>
-			<li class="nav-item"><a class="nav-link" href="boardController.bo?command=boardList.bo">게시판</a></li>
-		</ul>
-	</nav>
 	<table class="table">
 		<thead>
 			<tr>

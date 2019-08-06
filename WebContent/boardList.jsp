@@ -215,7 +215,7 @@
 	</div>
 	<!-- Add images to <div class="fotorama"></div> -->
 	<div id="fotorama_img">
-	<div class="fotorama" >
+	<div class="fotorama" id="boardList">
 		<img src="https://s.fotorama.io/1.jpg"> <img src="https://s.fotorama.io/2.jpg">
 	</div>
 	</div>

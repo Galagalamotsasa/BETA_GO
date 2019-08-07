@@ -4,12 +4,10 @@
 <head>
 <meta charset="UTF-8">
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>BETA-GO BOARD LIST</title>
 
 <link href="./css/bootstrap.min.css" type="text/css" rel="stylesheet"/>
-<link href="./css/bootstrap.min.css" type="text/css" rel="stylesheet" />
 <link rel="stylesheet" href="./css/slick.css">
 <link rel="stylesheet" href="./css/common.css">
 <!-- jQuery 1.8 or later, 33 KB -->

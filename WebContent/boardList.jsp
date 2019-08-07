@@ -226,7 +226,7 @@
 				<th scope="col" class="bno">번호</th>
 				<th scope="col" class="bcontent">제목</th>
 				<th scope="col">글쓴이</th>
-				<th scope="col">작성일</th>
+				<th scope="col">작성일</th>	
 				<th scope="col" class="cnt">조회</th>
 				<th scope="col" class="cnt">댓글</th>
 			</tr>

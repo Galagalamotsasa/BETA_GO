@@ -1,0 +1,414 @@
+@import url('https://fonts.googleapis.com/css?family=Nanum+Gothic');
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    border-radius: 0;
+}
+body {
+    font-family: 'Nanum Gothic', sans-serif;
+    font-size: 14px;
+}
+input,
+textarea,
+select,
+button {
+    font-family: inherit;
+    font-size: inherit;
+}
+button,
+input[type=button],
+input[type=submit] {
+    cursor: pointer;
+}
+li {
+    list-style: none;
+}
+img,
+a img {
+    border: none;
+}
+a {
+    color: inherit;
+    font-size: inherit;
+    text-decoration: none;
+}
+.wrap {
+    position: relative;
+}
+.inner {
+    max-width: 1240px;
+    margin: 0 auto;
+    padding: 0 15px;
+}
+.dimmed {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 998;
+    background-color: rgba(0,0,0,.3);
+}
+.clearFix:after {
+    content: '';
+    display: block;
+    clear: both;
+}
+
+/* header */
+.header .gnbWrap {
+    padding: 20px 0;
+    text-align: center;
+    background-color: #abc5d6;
+}
+.header .gnbWrap h1 {
+    position: static;
+}
+.header .gnbWrap h1 a {
+    display: inline-block;
+}
+.header .gnbWrap h1 .logo_pc {
+    display: none;
+}
+.header .gnbWrap .gnbOpen,
+.header .gnbWrap .gnbClose {
+    position: absolute;
+    top: 20px;
+    right: 15px;
+    width: 30px;
+    height: 22px;
+    border: none;
+    color: transparent;
+    font-size: 0;
+    background-color: transparent;
+}
+.header .gnbWrap .gnbOpen:before,
+.header .gnbWrap .gnbOpen span,
+.header .gnbWrap .gnbOpen:after {
+    content: '';
+    display: block;
+    width: 100%;
+    height: 2px;
+    background-color: #fff;
+    transition: all .2s;
+}
+.header .gnbWrap .gnbOpen span,
+.header .gnbWrap .gnbOpen:after {
+    margin-top: 8px;
+}
+.header .gnbWrap .gnbOpen.closeShape:before {
+    position: relative;
+    top: 10px;
+    transform: rotate(45deg);
+}
+.header .gnbWrap .gnbOpen.closeShape span {
+    opacity: 0;
+}
+.header .gnbWrap .gnbOpen.closeShape:after {
+    position: relative;
+    top: -10px;
+    transform: rotate(-45deg);
+}
+.header .gnbWrap .gnb {
+    display: none;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 999;
+    width: 100%;
+    height: 100%;
+    padding-bottom: 100px;
+    background-color: #fff;
+}
+.header .gnbWrap .gnb a {
+    display: block;
+}
+.header .gnbWrap .gnb .gnbLogo {
+    padding: 20px 0;
+    background-color: #abc5d6;
+}
+.header .gnbWrap .gnb .depth1 {
+    text-align: left;
+}
+.header .gnbWrap .gnb .depth1 li a {
+    padding: 0 15px;
+}
+.header .gnbWrap .gnb .depth1 > li {
+    border-bottom: 2px solid #ccc;
+}
+.header .gnbWrap .gnb .depth1 > li > a {
+    position: relative;
+    font-size: 17px;
+    font-weight: 700;
+    line-height: 60px;
+}
+
+/* searchWrap */
+.searchWrap {
+    padding-bottom: 20px;
+    background-color: #abc5d6;
+}
+.searchWrap .search {
+    position: relative;
+}
+.searchWrap .search .searchText {
+    width: 100%;
+    height: 40px;
+    padding: 0 40px 0 7px;
+    border: none;
+    border-radius: 7px;
+    line-height: 40px;
+}
+.searchWrap .search .searchButton {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 40px;
+    height: 40px;
+    border: none;
+    color: transparent;
+    font-size: 0;
+    background: url(../img/searchIcon.png) no-repeat center center;
+    background-color: transparent;
+    background-size: 30px;
+}
+
+/* section */
+.section {
+    min-height: 500px;
+}
+.section h2 {
+    margin: 40px 0 30px;
+    font-size: 20px;
+}
+footer{
+            display: block;
+            width: 100%;
+            height: 65px;
+            position: fixed;
+            bottom: 0;
+            border-top: 2px solid black;
+            background-color: white;
+        }
+        footer ul li{
+            float: left;
+            width: 33.333%;
+            list-style-type: none;
+            text-align: center;
+            font-size: 1em;
+        }
+
+        footer ul li a img{
+        height: 45px;
+        }
+
+footer ul li a div {
+            line-height: 0px;
+            color: #000;
+        }
+@media all and (min-width:1024px) {
+    .section h2 {
+        margin: 40px 0 30px;
+        font-size: 23px;
+    }
+    footer{
+                display: none;
+            }
+            .section h3 {
+                margin-top: 70px;
+                font-size: 28px;
+            }
+
+            .section .bestList .listItem {
+                width: 22%;
+                height: 264px;
+                margin: 10px 0 0 3%;
+                line-height: 1;
+            }
+
+            .section .bestList .listItem a>.txtWrap {
+                padding: 30px 20px;
+            }
+
+            .section .bestList .listItem strong:after {
+                content: '';
+                display: block;
+                width: 40px;
+                height: 2px;
+                margin: 15px auto 30px;
+                background-color: #fff;
+            }
+
+            .section .bestList .listItem p {
+                display: block;
+            }
+
+            .section .bestList li:first-child {
+                margin-left: 0;
+            }
+        
+            
+        }
+    
+}
+
+/* footer */
+.footer {
+    position: relative;
+    margin-top: 70px;
+    color: #fff;
+     
+}
+.footer .footer1 {
+    background-color: #676767;
+}
+.footer .footer1 li {
+    float: left;
+    position: relative;
+    line-height: 40px;
+}
+.footer .footer1 li + li:before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    width: 1px;
+    height: 10px;
+    margin-top: -5px;
+    background-color: #fff;
+}
+.footer .footer1 li a {
+    display: inline-block;
+    padding: 0 10px;
+    color: white;
+}
+.footer .footer1 li:first-child a {
+    padding-left: 0;
+    
+}
+.footer .footer2 {
+    padding: 20px 0;
+    font-size: 13px;
+    background-color: #333;
+   
+}
+.footer .footer2 .inner {
+    line-height: 2;
+    color: white;
+}
+.footer .footer2 .inner address {
+    font-style: normal;
+}
+.footer .topButton {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 40px;
+    font-size: 13px;
+    text-align: center;
+    line-height: 40px;
+    background-color: rgba(0,0,0,.7);
+}
+
+@media all and (min-width:1024px) {
+    body {
+        font-size: 16px;
+    }
+    .inner {
+        padding: 0 20px;
+    }
+
+    /* header */
+    .header .gnbWrap {
+        height: 140px;
+        padding: 0;
+        border-bottom: 1px solid #666;
+        text-align: left;
+        background-color: #fff;
+    }
+    .header .gnbWrap .inner {
+        position: relative;
+    }
+    .header .gnbWrap h1 {
+        position: absolute;
+        z-index: 1000;
+    }
+    .header .gnbWrap h1 .logo_mo {
+        display: none;
+    }
+    .header .gnbWrap h1 .logo_pc {
+        display: inline-block;
+        height: 70px;
+        margin-top: 35px;
+    }
+    .header .gnbWrap .gnbOpen,
+    .header .gnbWrap .gnbClose {
+        display: none;
+    }
+    .header .gnbWrap .gnb {
+        display: block;
+        top: 0;
+        right: 0;
+        padding-bottom: 0;
+        background-color: transparent;
+    }
+    .header .gnbWrap .gnb .gnbLogo {
+        display: none;
+    }
+    .header .gnbWrap .gnb .gnbLoginWrap {
+        display: none;
+    }
+    .header .gnbWrap .gnb a {
+        display: block;
+    }
+    .header .gnbWrap .gnb .depth1 {
+        text-align: right;
+    }
+    .header .gnbWrap .gnb .depth1 li a {
+        padding: 0;
+    }
+    .header .gnbWrap .gnb .depth1 > li {
+        display: inline-block;
+        position: relative;
+        width: 200px;
+        border-bottom: none;
+        text-align: center;
+    }
+    .header .gnbWrap .gnb .depth1 > li > a {
+        font-size: 20px;
+        line-height: 140px;
+    }
+
+    /* searchWrap */
+    .searchWrap {
+        padding-top: 20px;
+    }
+    .searchWrap .search .searchText {
+        height: 60px;
+        padding: 0 60px 0 10px;
+    }
+    .searchWrap .search .searchButton {
+        width: 60px;
+        height: 60px;
+        background-size: 40px;
+    }
+
+    /* footer */
+    .footer {
+        margin-top: 100px;
+    }
+    .footer .footer1 li {
+        font-size: 15px;
+        line-height: 50px;
+    }
+    .footer .footer2 {
+        font-size: 14px;
+        color: white;
+    }
+    .footer .topButton {
+        top: -50px;
+        width: 50px;
+        font-size: 14px;
+        line-height: 50px;
+    }
+}

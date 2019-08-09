@@ -189,7 +189,7 @@
 		<div class="gnbWrap">
 			<div class="inner">
 				<h1>
-					<a href="./index.html"> <img class="logo_mo" src="./img/logo_mo.png" alt="복지GO"> <img class="logo_pc" src="./img/logo_pc.png" alt="복지GO">
+					<a href="./index.html"> <img class="logo_mo" src="./img/logo_mo.png" alt="베타 GO"> <img class="logo_pc" src="./img/logo_pc.png" alt="베타 GO">
 					</a>
 				</h1>
 				<button class="gnbOpen">
@@ -197,13 +197,14 @@
 				</button>
 				<nav class="gnb">
 					<div class="gnbLogo" >
-						<a href="#"> <img class="logo_mo" src="./img/logo_mo.png" alt="복지GO">
+						<a href="#"> <img class="logo_mo" src="./img/logo_mo.png" alt="베타 GO">
 						</a>
 					</div>
 					<ul class="depth1">
-						<li><a href="/sub/tema_list.html">테마별 찾기</a></li>
-						<li><a href="/sub/area_list.html">지역별 찾기</a></li>
-						<li><a href="/sub/myLocation.html">내주변 찾기</a></li>
+						<li><a href="#">BETA-GO란?</a></li>
+						<li><a href="#">강좌 찾기</a></li>
+						<li><a href="#">묶음 찾기</a></li>
+						<li><a href="#">커뮤니티</a></li>
 					</ul>
 				</nav>
 				<button class="gnbClose">모바일메뉴닫기</button>
@@ -213,6 +214,7 @@
 	<div id="fotorama_img">
 	<div class="fotorama" id="boardList">
 		<img src="https://s.fotorama.io/1.jpg"> <img src="https://s.fotorama.io/2.jpg">
+	</div>
 	</div>
 	<footer id="mobile_footer">
 		<ul>

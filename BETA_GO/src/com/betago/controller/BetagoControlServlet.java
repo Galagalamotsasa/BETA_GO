@@ -11,7 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 /**
  * Servlet implementation class BetagoControlServlet
  */
-@WebServlet({"/BoardControlServlet","/BetageController.bo"})
+@WebServlet({"/BoardControlServlet","/BetagoController.bo"})
 public class BetagoControlServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        

@@ -11,7 +11,11 @@ import javax.servlet.http.HttpServletResponse;
 /**
  * Servlet implementation class BetagoControlServlet
  */
+<<<<<<< HEAD
 @WebServlet({"/BoardControlServlet","/BetagoController.bo"})
+=======
+@WebServlet({"/BetagoControlServlet", "/BetagoController.bo"})
+>>>>>>> BETA_GO/master
 public class BetagoControlServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
@@ -42,6 +46,9 @@ public class BetagoControlServlet extends HttpServlet {
 	protected void doPro(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		System.out.println("서블릿호출");
 		
+		
+		BetagoActionForward forward=null;
+		IBetagoAction action=null;
 		
 	}
 	

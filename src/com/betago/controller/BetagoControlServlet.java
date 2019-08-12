@@ -11,11 +11,9 @@ import javax.servlet.http.HttpServletResponse;
 /**
  * Servlet implementation class BetagoControlServlet
  */
-<<<<<<< HEAD
-@WebServlet({"/BoardControlServlet","/BetagoController.bo"})
-=======
+
 @WebServlet({"/BetagoControlServlet", "/BetagoController.bo"})
->>>>>>> BETA_GO/master
+
 public class BetagoControlServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        

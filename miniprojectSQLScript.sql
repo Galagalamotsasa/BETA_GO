@@ -21,6 +21,9 @@ CREATE TABLE `miniproject`.`class` (
   FOREIGN KEY (`cc_no`) REFERENCES `cc`(`cc_no`)
   );
   
+-- class 테이블에 수강인원 수 추가
+ALTER TABLE `miniproject`.`class` 
+ADD COLUMN `class_candidates` INT(5) NULL DEFAULT 0 AFTER `class_img`;
   
 -- Account 테이블 생성
 CREATE TABLE `miniproject`.`account` (
@@ -68,6 +71,10 @@ CREATE TABLE `miniproject`.`class_history` (
     FOREIGN KEY (`class_no`) REFERENCES `class`(`class_no`),
     FOREIGN KEY (`account_id`) REFERENCES `account`(`account_id`));
 
+-- 자동으로 기록 번호를 늘려준다.
+ALTER TABLE `miniproject`.`class_history` 
+CHANGE COLUMN `history_no` `history_no` INT(5) NOT NULL AUTO_INCREMENT ;
+
 
 -- video 테이블 생성
 CREATE TABLE `miniproject`.`video` (
@@ -111,7 +118,6 @@ CREATE TABLE `miniproject`.`quiz` (
 -- quiz_answer 테이블 생성
 CREATE TABLE `miniproject`.`quiz_answer` (
 	`quiz_A_no` INT(5) NOT NULL,
-    `chapter_no` INT(5),
     `quiz_no` INT(5),
     `quiz_A_qno` INT(2) NOT NULL,
     `quiz_A_desc` NVARCHAR(2048) NOT NULL,
@@ -120,6 +126,22 @@ CREATE TABLE `miniproject`.`quiz_answer` (
     `account_id` NVARCHAR(20),
     PRIMARY KEY (`quiz_A_no`),
     FOREIGN KEY (`quiz_no`) REFERENCES `quiz`(`quiz_no`),
-    FOREIGN KEY (`chapter_no`) REFERENCES `chapter`(`chapter_no`),
     FOREIGN KEY (`account_id`) REFERENCES `account`(`account_id`)
 );
+
+-- 퀴즈 답 테이블 생성
+create table quiz_answer(
+   quiz_A_no int(5),
+    quiz_no int(5),
+    quiz_A_desc nvarchar(2048),
+    quiz_A_file nvarchar(100),
+    quiz_A_score int(3),
+    account_id nvarchar(20),
+    primary key (quiz_A_no),
+    foreign key (quiz_no) references quiz.quiz_no,
+    foreign key (account_no) references account.account_no
+);
+
+-- 프로시저 호출 부분
+call insertClassLog_Candidates(1, 'kxodud1005', '스마트 웹 & 콘텐츠 개발자  양성', '2019-12-01', '2020-05-18');
+call insertClassLog_Candidates(2, 'thor1234', '스마트 웹 & 콘텐츠 개발자  양성', '2019-09-30', '2020-3-30');

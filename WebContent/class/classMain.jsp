@@ -189,7 +189,7 @@
 		<div class="gnbWrap">
 			<div class="inner">
 				<h1>
-					<a href="./index.html"> <img class="logo_mo" src="./img/logo_mo.png" alt="베타 GO"> <img class="logo_pc" src="./img/logo_pc.png" alt="베타 GO">
+					<a href="./index.html"> <img class="logo_mo" src="../img/logo_mo.png" alt="베타 GO"> <img class="logo_pc" src="../img/logo_pc.png" alt="베타 GO">
 					</a>
 				</h1>
 				<button class="gnbOpen">
@@ -197,7 +197,7 @@
 				</button>
 				<nav class="gnb">
 					<div class="gnbLogo" >
-						<a href="#"> <img class="logo_mo" src="./img/logo_mo.png" alt="베타 GO">
+						<a href="#"> <img class="logo_mo" src="../img/logo_mo.png" alt="베타 GO">
 						</a>
 					</div>
 					<ul class="depth1">

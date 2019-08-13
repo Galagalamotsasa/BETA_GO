@@ -212,27 +212,31 @@
 		</div>
 	</div>
 	<div class="container">
-		<form>
 			<h2>회원가입</h2>
+			
+			<form action = "" class="account-validated" method="post" onsubmit="return check();" enctype="multipart/form-data" autocomplete="off">
 			<div class="form-group">
 				<label for="account_id">아이디</label>
-				<input type="text" class="form-control" id="account_id" >
+				<input type="text" class="form-control" id="account_id" placeholder="아이디는 6~20자로 기입하세요" required>
+				<div id="errorAccount_id" class="error"></div>
 			</div>
 			<div class="form-group">
 				<label for="account_pwd">비밀번호</label>
-				<input type="password" class="form-control" id="account_pwd">
+				<input type="password" class="form-control" id="account_pwd" placeholder="비밀번호는 6~20자로 기입하세요" required>
+				<div id="errorAccount_pwd" class="error"></div>
 			</div>
 			<div class="form-group">
 				<label for="account_pwdConf">비밀번호 재확인</label>
-				<input type="password" class="form-control" id="account_pwdConf">
+				<input type="password" class="form-control" id="account_pwdConf" required>
+				<div id="errorAccount_pwdConf" class="error"></div>
 			</div>
 			<div class="form-group">
 				<label for="user_name">이름</label>
-				<input type="text" class="form-control" id="user_name">
+				<input type="text" class="form-control" id="user_name" required>
 			</div>
 			<div class="form-group">
 				<label for="user_birth">생년월일</label>
-				<input type="date" class="form-control" id="user_birth">
+				<input type="date" class="form-control" id="user_birth" required>
 			</div>
 			<div class="form-group">
 			<label for="user_birth">성별</label>
@@ -240,12 +244,15 @@
 					<option value="male" checked>남자</option>
 					<option value="female">여자</option>
 				</select>
-
 			</div>
 			
 			<div class="form-group">
 				<label for="user_phone">휴대전화</label>
-				<input type="text" class="form-control" id="user_phone">
+				<input type="text" class="form-control" id="user_phone" placeholder="예) 010-1234-1234" required>
+			</div>
+			<div class="form-group">
+				<label for="user_email">이메일</label>
+				<input type="email" class="form-control" id="user_email">
 			</div>
 			<div class="form-group">
 				<label for="user_addr">주소</label>
@@ -253,22 +260,34 @@
 			</div>
 			<div class="form-group">
 				<label for="user_img">이미지</label>
-				<input type="text" class="form-control" id="user_img">
+				<input type="file" class="form-control" id="user_img">
 			</div>
-			<div class="form-group">
-				<label for="user_email">이메일</label>
-				<input type="email" class="form-control" id="user_email">
-			</div>
+
 			<div class="form-group">
 				<label for="user_education">학력</label>
-				<textarea class="form-control" rows="5" id="user_education"></textarea>
+				<select id="user_education" class="form-control" >
+					<option value="middle">중졸</option>
+					<option value="high" checked>고졸</option>
+					<option value="college">초대졸</option>
+					<option value="university">대학(4년)</option>
+					<option value="GSM">대학원(석사)</option>
+					<option value="GSD">대학원(박사)</option>
+				</select>
 			</div>
+			<!--
+			1) 중졸, 고졸시에는 전공 안 뜨게?
+			2) 기타 넣어서 직접입력은 어떤지  -->
 			<div class="form-group">
 				<label for="user_major">전공</label>
 				<textarea class="form-control" rows="5" id="user_major"></textarea>
 			</div>
 			
-			  <button type="button" class="btn btn-primary btn-lg btn-block">가입하기</button>
+			<!--
+			네이버: 가입페이지 전에 이용약관.
+			<button type="reset" class="btn btn-danger btn-lg btn-block">취소하기</button>
+			
+			-->
+			<button type="submit" class="btn btn-primary btn-lg btn-block">가입하기</button>
 		</form>
 	</div>
 

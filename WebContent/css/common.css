@@ -182,75 +182,11 @@ a {
     margin: 40px 0 30px;
     font-size: 20px;
 }
-footer{
-            display: block;
-            width: 100%;
-            height: 65px;
-            position: fixed;
-            bottom: 0;
-            border-top: 2px solid black;
-            background-color: white;
-        }
-        footer ul li{
-            float: left;
-            width: 33.333%;
-            list-style-type: none;
-            text-align: center;
-            font-size: 1em;
-        }
-
-        footer ul li a img{
-        height: 45px;
-        }
-
-footer ul li a div {
-            line-height: 0px;
-            color: #000;
-        }
 @media all and (min-width:1024px) {
     .section h2 {
         margin: 40px 0 30px;
         font-size: 23px;
     }
-    footer{
-                display: none;
-            }
-            .section h3 {
-                margin-top: 70px;
-                font-size: 28px;
-            }
-
-            .section .bestList .listItem {
-                width: 22%;
-                height: 264px;
-                margin: 10px 0 0 3%;
-                line-height: 1;
-            }
-
-            .section .bestList .listItem a>.txtWrap {
-                padding: 30px 20px;
-            }
-
-            .section .bestList .listItem strong:after {
-                content: '';
-                display: block;
-                width: 40px;
-                height: 2px;
-                margin: 15px auto 30px;
-                background-color: #fff;
-            }
-
-            .section .bestList .listItem p {
-                display: block;
-            }
-
-            .section .bestList li:first-child {
-                margin-left: 0;
-            }
-        
-            
-        }
-    
 }
 
 /* footer */
@@ -258,7 +194,6 @@ footer ul li a div {
     position: relative;
     margin-top: 70px;
     color: #fff;
-     
 }
 .footer .footer1 {
     background-color: #676767;
@@ -280,21 +215,17 @@ footer ul li a div {
 .footer .footer1 li a {
     display: inline-block;
     padding: 0 10px;
-    color: white;
 }
 .footer .footer1 li:first-child a {
     padding-left: 0;
-    
 }
 .footer .footer2 {
     padding: 20px 0;
     font-size: 13px;
     background-color: #333;
-   
 }
 .footer .footer2 .inner {
     line-height: 2;
-    color: white;
 }
 .footer .footer2 .inner address {
     font-style: normal;
@@ -403,7 +334,6 @@ footer ul li a div {
     }
     .footer .footer2 {
         font-size: 14px;
-        color: white;
     }
     .footer .topButton {
         top: -50px;

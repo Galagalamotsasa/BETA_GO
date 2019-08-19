@@ -15,7 +15,8 @@
 <script src="js/bootstrap.min.js"></script>
 <link  href="https://cdnjs.cloudflare.com/ajax/libs/fotorama/4.6.4/fotorama.css" rel="stylesheet">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/fotorama/4.6.4/fotorama.js"></script> 
-
+<script>
+</script>
 </head>
 <body>
 <div class="wrap">
@@ -23,21 +24,21 @@
             <div class="gnbWrap">
                 <div class="inner">
                     <h1>
-                        <a href="./index.html">
-                            <img class="logo_mo" src="./img/logo_mo.png" alt="베타GO">
-                            <img class="logo_pc" src="./img/logo_pc.png" alt="베타GO">
+                        <a href="Home.jsp">
+                            <img class="logo_mo" src="./asset/img/logo_mo.png" alt="BETA-GO">
+                            <img class="logo_pc" src="./asset/img/logo_pc.png" alt="BETA-GO">
                         </a>
                     </h1>
                     <button class="gnbOpen"><span>모바일메뉴열기</span></button>
                     <nav class="gnb">
                         <div class="gnbLogo">
                             <a href="#">
-                                <img class="logo_mo" src="./img/logo_mo.png" alt="베타GO">
+                                <img class="logo_mo" src="./asset/img/logo_mo.png" alt="복지GO">
                             </a>
                         </div>
                         <ul class="depth1">
                             <li><a href="#">BETA-GO란?</a></li>
-                            <li><a href="lectureList.jsp">강좌 찾기</a></li>
+                            <li><a href="BetagoController.bo?mode=classList.bo">강좌 찾기</a></li>
                             <li><a href="#">묶음 찾기</a></li>
                             <li><a href="#">커뮤니티</a></li>
                         </ul>
@@ -67,48 +68,25 @@
         <div class="footer">
             <div class="footer1">
                 <div class="inner">
-                    <ul class="clearFix">
-                        <li><a href=#>이용약관</a></li>
-                        <li><a href=#>개인정보 처리방침</a></li>
-                        <li><a href=#>오시는길</a></li>
+                    <ul class="clearFix" >
+                        <li><a href="#" style="color:white">이용약관</a></li>
+                        <li><a href="#" style="color:white">개인정보 처리방침</a></li>
+                        <li><a href="#" style="color:white">오시는길</a></li>
                     </ul>
                 </div>
             </div>
             <div class="footer2">
                 <div class="inner">
                     <address>서울시 금천구 가산디지털2로 대륭테크노타운 3차</address>
-                    <a href="tel:02.000.0000">문의전화 02)000-0000 </a>
+                    <a href="tel:02.000.0000" style="color:white">문의전화 02)000-0000 </a>
                     <div>Copyright &copy; 오벤져스. All Right Reserved.</div>
                 </div>
             </div>
-            <a href="#" class="topButton">TOP</a>
+            <a href="#" class="topButton" style="color:white">TOP</a>
         </div>
     </div>
     
-     <footer id="mobile_footer">
-        <ul>
-            <li id="level">
-                <a href="./map.html">
-                    <img src='./img/adventurerblk.png' id='levelFooter' style="margin-bottom: 5px;" />
-                    <div>지도</div>
-                </a>
-            </li>
-
-            <li id="mountain">
-                <a href="./region.html">
-                    <img src='./img/goalsblk.png' id='mountainFooter' style="margin-bottom: 5px;" />
-                    <div>명산</div>
-                </a>
-            </li>
-
-            <li id="community">
-                <a href="./community.html">
-                    <img src='./img/friendshipblk.png' id='communityFooter' style="margin-bottom: 5px;" />
-                    <div>커뮤니티</div>
-                </a>
-            </li>
-        </ul>
-    </footer>
+     
     <script src="https://code.jquery.com/jquery-3.4.0.min.js"></script>
     <script src="js/slick.min.js"></script>
     <script src="js/common.js"></script>

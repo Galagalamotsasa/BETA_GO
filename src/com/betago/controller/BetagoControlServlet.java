@@ -44,19 +44,30 @@ public class BetagoControlServlet extends HttpServlet {
 	protected void doPro(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		System.out.println("BetagoControlServlet 호출");
 		
-		String modeParam = request.getParameter("mode");
-		System.out.println("mode : " + modeParam);
+		String mode = request.getParameter("mode");
+		System.out.println("mode : " + mode);
 		
 		BetagoActionForward forward=null;
 		IBetagoAction action=null;
 		
-		if (modeParam != null) {
-			System.out.println("mode : " + modeParam);
+		if (mode != null) {
+			System.out.println("mode : " + mode);
 			
-			if (modeParam.equals("lecDetail.bo")) {	
+			if (mode.equals("lecDetail.bo")) {	
 				System.out.println("강의 상세 페이지 보기");
 				
 				action = new BetagoLecDetailAction();
+				
+				try {
+					forward = action.execute(request, response);
+				} catch (Exception e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+			} else if(mode.equals("getChapterList.bo")) {
+				System.out.println("챕터리스트 JSON으로 불러오기");
+				
+				action = new BetagoChapterListJSON();
 				
 				try {
 					forward = action.execute(request, response);

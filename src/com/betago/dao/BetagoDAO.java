@@ -5,9 +5,12 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.naming.NamingException;
 
+import com.betago.dto.ChapterVO;
 import com.betago.dto.LecDetailSelectByHistory;
 import com.ssj.util.DBManagement;
 
@@ -57,6 +60,25 @@ public class BetagoDAO {
 		
 		
 		return selectQ;
+	}
+
+	public List<ChapterVO> getChapterJSON(int classno) throws ClassNotFoundException, SQLException {
+		List<ChapterVO> chapterList = new ArrayList<ChapterVO>();
+		String query = "SELECT * FROM miniproject.chapter where class_no = " + classno;
+		Connection con = DBManagement.getConnection();
+		
+		PreparedStatement pstmt = con.prepareStatement(query);
+		ResultSet rs = pstmt.executeQuery();
+		while (rs.next()) {
+			chapterList.add(new ChapterVO(rs.getInt("chapter_no"), rs.getInt("class_no"), rs.getString("chapter_title"), rs.getString("chapter_object"), rs.getString("chapter_detail"), rs.getDate("chapter_startdate"), rs.getDate("chapter_enddate"), rs.getInt("video_no")));
+		}
+		System.out.println("DAO : " + chapterList);
+		
+		pstmt.close();
+		con.close();
+		
+			
+		return chapterList;
 	}
 	
 	

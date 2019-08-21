@@ -1,17 +1,14 @@
 @import url('https://fonts.googleapis.com/css?family=Nanum+Gothic');
-
 * {
     box-sizing: border-box;
     margin: 0;
     padding: 0;
     border-radius: 0;
 }
-
 body {
     font-family: 'Nanum Gothic', sans-serif;
     font-size: 14px;
 }
-
 input,
 textarea,
 select,
@@ -19,39 +16,31 @@ button {
     font-family: inherit;
     font-size: inherit;
 }
-
 button,
 input[type=button],
 input[type=submit] {
     cursor: pointer;
 }
-
 li {
     list-style: none;
 }
-
 img,
 a img {
     border: none;
 }
-
 a {
     color: inherit;
     font-size: inherit;
     text-decoration: none;
 }
-
-/*
 .wrap {
     position: relative;
 }
-*/
 .inner {
     max-width: 1240px;
     margin: 0 auto;
     padding: 0 15px;
 }
-
 .dimmed {
     position: absolute;
     top: 0;
@@ -59,33 +48,29 @@ a {
     bottom: 0;
     left: 0;
     z-index: 998;
-    background-color: rgba(0, 0, 0, .3);
+    background-color: rgba(0,0,0,.3);
 }
-
 .clearFix:after {
     content: '';
     display: block;
     clear: both;
 }
 
-header .header .gnbWrap {
+/* header */
+.header .gnbWrap {
     padding: 20px 0;
     text-align: center;
     background-color: #abc5d6;
 }
-
 .header .gnbWrap h1 {
     position: static;
 }
-
 .header .gnbWrap h1 a {
     display: inline-block;
 }
-
 .header .gnbWrap h1 .logo_pc {
     display: none;
 }
-
 .header .gnbWrap .gnbOpen,
 .header .gnbWrap .gnbClose {
     position: absolute;
@@ -98,7 +83,6 @@ header .header .gnbWrap {
     font-size: 0;
     background-color: transparent;
 }
-
 .header .gnbWrap .gnbOpen:before,
 .header .gnbWrap .gnbOpen span,
 .header .gnbWrap .gnbOpen:after {
@@ -109,28 +93,23 @@ header .header .gnbWrap {
     background-color: #fff;
     transition: all .2s;
 }
-
 .header .gnbWrap .gnbOpen span,
 .header .gnbWrap .gnbOpen:after {
     margin-top: 8px;
 }
-
 .header .gnbWrap .gnbOpen.closeShape:before {
     position: relative;
     top: 10px;
     transform: rotate(45deg);
 }
-
 .header .gnbWrap .gnbOpen.closeShape span {
     opacity: 0;
 }
-
 .header .gnbWrap .gnbOpen.closeShape:after {
     position: relative;
     top: -10px;
     transform: rotate(-45deg);
 }
-
 .header .gnbWrap .gnb {
     display: none;
     position: absolute;
@@ -142,28 +121,22 @@ header .header .gnbWrap {
     padding-bottom: 100px;
     background-color: #fff;
 }
-
 .header .gnbWrap .gnb a {
     display: block;
 }
-
 .header .gnbWrap .gnb .gnbLogo {
     padding: 20px 0;
     background-color: #abc5d6;
 }
-
 .header .gnbWrap .gnb .depth1 {
     text-align: left;
 }
-
 .header .gnbWrap .gnb .depth1 li a {
     padding: 0 15px;
 }
-
 .header .gnbWrap .gnb .depth1 > li {
     border-bottom: 2px solid #ccc;
 }
-
 .header .gnbWrap .gnb .depth1 > li > a {
     position: relative;
     font-size: 17px;
@@ -176,11 +149,9 @@ header .header .gnbWrap {
     padding-bottom: 20px;
     background-color: #abc5d6;
 }
-
 .searchWrap .search {
     position: relative;
 }
-
 .searchWrap .search .searchText {
     width: 100%;
     height: 40px;
@@ -189,7 +160,6 @@ header .header .gnbWrap {
     border-radius: 7px;
     line-height: 40px;
 }
-
 .searchWrap .search .searchButton {
     position: absolute;
     top: 0;
@@ -208,12 +178,10 @@ header .header .gnbWrap {
 .section {
     min-height: 500px;
 }
-
 .section h2 {
     margin: 40px 0 30px;
     font-size: 20px;
 }
-
 @media all and (min-width:1024px) {
     .section h2 {
         margin: 40px 0 30px;
@@ -227,17 +195,14 @@ header .header .gnbWrap {
     margin-top: 70px;
     color: #fff;
 }
-
 .footer .footer1 {
     background-color: #676767;
 }
-
 .footer .footer1 li {
     float: left;
     position: relative;
     line-height: 40px;
 }
-
 .footer .footer1 li + li:before {
     content: '';
     position: absolute;
@@ -247,30 +212,24 @@ header .header .gnbWrap {
     margin-top: -5px;
     background-color: #fff;
 }
-
 .footer .footer1 li a {
     display: inline-block;
     padding: 0 10px;
 }
-
 .footer .footer1 li:first-child a {
     padding-left: 0;
 }
-
 .footer .footer2 {
     padding: 20px 0;
     font-size: 13px;
     background-color: #333;
 }
-
 .footer .footer2 .inner {
     line-height: 2;
 }
-
 .footer .footer2 .inner address {
     font-style: normal;
 }
-
 .footer .topButton {
     position: absolute;
     top: 0;
@@ -279,14 +238,13 @@ header .header .gnbWrap {
     font-size: 13px;
     text-align: center;
     line-height: 40px;
-    background-color: rgba(0, 0, 0, .7);
+    background-color: rgba(0,0,0,.7);
 }
 
 @media all and (min-width:1024px) {
     body {
         font-size: 16px;
     }
-
     .inner {
         padding: 0 20px;
     }
@@ -299,31 +257,25 @@ header .header .gnbWrap {
         text-align: left;
         background-color: #fff;
     }
-
     .header .gnbWrap .inner {
         position: relative;
     }
-
     .header .gnbWrap h1 {
         position: absolute;
         z-index: 1000;
     }
-
     .header .gnbWrap h1 .logo_mo {
         display: none;
     }
-
     .header .gnbWrap h1 .logo_pc {
         display: inline-block;
         height: 70px;
         margin-top: 35px;
     }
-
     .header .gnbWrap .gnbOpen,
     .header .gnbWrap .gnbClose {
         display: none;
     }
-
     .header .gnbWrap .gnb {
         display: block;
         top: 0;
@@ -331,27 +283,21 @@ header .header .gnbWrap {
         padding-bottom: 0;
         background-color: transparent;
     }
-
     .header .gnbWrap .gnb .gnbLogo {
         display: none;
     }
-
     .header .gnbWrap .gnb .gnbLoginWrap {
         display: none;
     }
-
     .header .gnbWrap .gnb a {
         display: block;
     }
-
     .header .gnbWrap .gnb .depth1 {
         text-align: right;
     }
-
     .header .gnbWrap .gnb .depth1 li a {
         padding: 0;
     }
-
     .header .gnbWrap .gnb .depth1 > li {
         display: inline-block;
         position: relative;
@@ -359,21 +305,19 @@ header .header .gnbWrap {
         border-bottom: none;
         text-align: center;
     }
-
     .header .gnbWrap .gnb .depth1 > li > a {
         font-size: 20px;
         line-height: 140px;
     }
 
-    searchWrap .searchWrap {
+    /* searchWrap */
+    .searchWrap {
         padding-top: 20px;
     }
-
     .searchWrap .search .searchText {
         height: 60px;
         padding: 0 60px 0 10px;
     }
-
     .searchWrap .search .searchButton {
         width: 60px;
         height: 60px;
@@ -384,16 +328,13 @@ header .header .gnbWrap {
     .footer {
         margin-top: 100px;
     }
-
     .footer .footer1 li {
         font-size: 15px;
         line-height: 50px;
     }
-
     .footer .footer2 {
         font-size: 14px;
     }
-
     .footer .topButton {
         top: -50px;
         width: 50px;

@@ -52,35 +52,3 @@ $(document).ready(function(){
 		$(window).scrollTop(0);
 	});
 });
-
-    window.onload = function() {
-
-            var level = document.getElementById("levelFooter");
-            var mountain = document.getElementById("mountainFooter");
-            var community = document.getElementById("communityFooter");
-
-
-            level.addEventListener("mouseover", function() {
-                level.src = "./img/adventurer.png";
-            });
-            level.addEventListener("mouseout", function() {
-                level.src = "./img/adventurerblk.png";
-            });
-
-
-            mountain.addEventListener("mouseover", function() {
-                mountain.src = "./img/goals.png";
-            });
-            mountain.addEventListener("mouseout", function() {
-                mountain.src = "./img/goalsblk.png";
-            });
-
-
-            community.addEventListener("mouseover", function() {
-                community.src = "./img/friendship.png";
-            });
-            community.addEventListener("mouseout", function() {
-                community.src = "./img/friendshipblk.png";
-            });
-
-        }

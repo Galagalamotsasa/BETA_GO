@@ -8,6 +8,8 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 
 <title>BETA_GO ACCOUNT</title>
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 <link href="./css/bootstrap.min.css" type="text/css" rel="stylesheet" />
 <link rel="stylesheet" href="./css/slick.css">
 <link rel="stylesheet" href="./css/common.css">
@@ -15,7 +17,81 @@
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+<script>
 
+
+function check(){  //회원가입 유효성 검사
+	
+	var result = true;
+
+	
+	var account_id = $('#account_id').val();
+	var account_pwd = $('#account_pwd').val();
+	var account_pwdConf = $('#account_pwdConf').val();
+	var user_name = $('#user_name').val();
+	var user_phone = $('#user_phone').val();
+	
+
+	
+	if(account_id.length < 5 || account_id.length > 20){
+		$('#errorAccount_id').html('아이디는 5~20자로 기입하세요');
+		result = false;
+	} else if (account_pwd.length < 5 || account_pwd.length > 20) {
+		$('#errorAccount_pwd').html('비밀번호는 5~20자로 기입하세요');
+		result = false;
+	} else 	if (account_pwd !== account_pwdConf) {
+		$('#errorAccount_pwdConf').html('비밀번호가 일치하지 않습니다');
+		$('#account_pwd').focus();
+		result = false;
+	}
+	
+	if (isdup == result) {
+		return false;
+	} else {
+		return false;
+	}
+	
+
+}
+	
+	function isdup(){
+		var account_id = $('#account_id').val();
+
+		var result = true;
+		if (account_id.length >= 5) { 
+			$.ajax({ 
+				type : "GET",
+				url : "../BetagoController.bo?account_id=" + account_id,
+				dataType : "json", // 서버에서 반환되는 데이터 타입
+				success : function(data) {
+					console.log(data);
+					
+					if (data.resultCode == 'true') {
+						$('#errorAccount_id').html('아이디가 중복됩니다');
+						result = false;
+					} 
+				},
+				error : function(res) {
+					console.log(res.responseText);
+				},
+				complete : function() {
+					setTimeout(() => {
+						$('#errorAccount_id').empty()
+					}, 500);
+				}
+			}); // ajax 끝
+		}
+		return result;
+	}
+	
+
+
+</script>
+<style>
+.error {
+	color: red;
+}
+</style>
 </head>
 <style>
 .swiper-container {
@@ -166,7 +242,8 @@
 }
 
 #boardList {
-	width: 80%; text-align : center;
+	width: 80%;
+	text-align: center;
 	margin-right: auto;
 	margin-left: auto;
 	text-align: center;
@@ -183,22 +260,24 @@
 .cnt {
 	width: 7%;
 }
-
 </style>
 <body>
 	<div class="header">
 		<div class="gnbWrap">
 			<div class="inner">
 				<h1>
-					<a href="./index.html"> <img class="logo_mo" src="./img/logo_mo.png" alt="복지GO"> <img class="logo_pc" src="./img/logo_pc.png" alt="복지GO">
+					<a href="./index.html"> <img class="logo_mo"
+						src="./img/logo_mo.png" alt="복지GO"> <img class="logo_pc"
+						src="./img/logo_pc.png" alt="복지GO">
 					</a>
 				</h1>
 				<button class="gnbOpen">
 					<span>모바일메뉴열기</span>
 				</button>
 				<nav class="gnb">
-					<div class="gnbLogo" >
-						<a href="#"> <img class="logo_mo" src="./img/logo_mo.png" alt="복지GO">
+					<div class="gnbLogo">
+						<a href="#"> <img class="logo_mo" src="./img/logo_mo.png"
+							alt="복지GO">
 						</a>
 					</div>
 					<ul class="depth1">
@@ -212,81 +291,105 @@
 		</div>
 	</div>
 	<div class="container">
-			<h2>회원가입</h2>
-			
-			<form action = "" class="account-validated" method="post" onsubmit="return check();" enctype="multipart/form-data" autocomplete="off">
+		<h2>회원가입</h2>
+
+		<form action="./BetagoController.bo?mode=insert.do" method="post"
+			enctype="multipart/form-data" onsubmit="return check();">
+			<!-- class="account-validated"  autocomplete="off" -->
+
 			<div class="form-group">
-				<label for="account_id">아이디</label>
-				<input type="text" class="form-control" id="account_id" placeholder="아이디는 6~20자로 기입하세요" required>
-				<div id="errorAccount_id" class="error"></div>
-			</div>
-			<div class="form-group">
-				<label for="account_pwd">비밀번호</label>
-				<input type="password" class="form-control" id="account_pwd" placeholder="비밀번호는 6~20자로 기입하세요" required>
-				<div id="errorAccount_pwd" class="error"></div>
-			</div>
-			<div class="form-group">
-				<label for="account_pwdConf">비밀번호 재확인</label>
-				<input type="password" class="form-control" id="account_pwdConf" required>
-				<div id="errorAccount_pwdConf" class="error"></div>
-			</div>
-			<div class="form-group">
-				<label for="user_name">이름</label>
-				<input type="text" class="form-control" id="user_name" required>
-			</div>
-			<div class="form-group">
-				<label for="user_birth">생년월일</label>
-				<input type="date" class="form-control" id="user_birth" required>
-			</div>
-			<div class="form-group">
-			<label for="user_birth">성별</label>
-				<select id="user_gender" class="form-control" >
-					<option value="male" checked>남자</option>
-					<option value="female">여자</option>
+				<label for="auth_no">해당사항</label> <select id="auth_no"
+					name="auth_no" class="form-control">
+					<option value="1" checked>학생</option>
+					<option value="2">강사</option>
 				</select>
 			</div>
-			
 			<div class="form-group">
-				<label for="user_phone">휴대전화</label>
-				<input type="text" class="form-control" id="user_phone" placeholder="예) 010-1234-1234" required>
-			</div>
-			<div class="form-group">
-				<label for="user_email">이메일</label>
-				<input type="email" class="form-control" id="user_email">
-			</div>
-			<div class="form-group">
-				<label for="user_addr">주소</label>
-				<input type="text" class="form-control" id="user_addr">
-			</div>
-			<div class="form-group">
-				<label for="user_img">이미지</label>
-				<input type="file" class="form-control" id="user_img">
+				<label for="account_id">아이디</label> <input type="text"
+					class="form-control" id="account_id" name="account_id"
+					placeholder="아이디는 5~20자로 기입하세요" required>
+				<div id="errorAccount_id" class="error"></div>
 			</div>
 
 			<div class="form-group">
-				<label for="user_education">학력</label>
-				<select id="user_education" class="form-control" >
+				<label for="account_pwd">비밀번호</label> <input type="password"
+					class="form-control" id="account_pwd" name="account_pwd"
+					placeholder="비밀번호는 5~20자로 기입하세요" required>
+				<div id="errorAccount_pwd" class="error"></div>
+			</div>
+
+			<div class="form-group">
+				<label for="account_pwdConf">비밀번호 재확인</label> <input type="password"
+					class="form-control" id="account_pwdConf" name="account_pwdConf"
+					required>
+				<div id="errorAccount_pwdConf" class="error"></div>
+			</div>
+
+			<div class="form-group">
+				<label for="user_name">이름</label> <input type="text"
+					class="form-control" id="user_name" name="user_name" required>
+				<div id="errorUser_name" class="error"></div>
+			</div>
+
+			<div class="form-group">
+				<label for="user_birth">생년월일</label> <input type="date"
+					class="form-control" id="user_birth" name="user_birth" required>
+				<div id="errorUser_birth" class="error"></div>
+			</div>
+
+
+			<div class="form-group">
+				<label for="user_birth">성별</label> <select id="user_gender"
+					name="user_gender" class="form-control">
+					<option value="m" checked>남자</option>
+					<option value="f">여자</option>
+				</select>
+			</div>
+
+			<div class="form-group">
+				<label for="user_phone">휴대전화</label> <input type="text"
+					class="form-control" id="user_phone" name="user_phone"
+					placeholder="예) 010-1234-1234" required>
+				<div id="errorUser_phone" class="error"></div>
+			</div>
+
+			<div class="form-group">
+				<label for="user_email">이메일(선택)</label> <input type="email"
+					class="form-control" id="user_email" name="user_email">
+			</div>
+
+			<!-- 주소 zip 가져오기 -->
+			<div class="form-group">
+				<label for="user_addr">주소</label> <input type="text"
+					class="form-control" id="user_addr" name="user_addr">
+			</div>
+
+
+			<div class="form-group">
+				<label for="user_img">이미지</label> <input type="file"
+					class="form-control" id="user_img" name="user_img">
+			</div>
+
+			<div class="form-group">
+				<label for="user_education">학력</label> <select id="user_education"
+					name="user_education" class="form-control">
 					<option value="middle">중졸</option>
 					<option value="high" checked>고졸</option>
 					<option value="college">초대졸</option>
 					<option value="university">대학(4년)</option>
-					<option value="GSM">대학원(석사)</option>
-					<option value="GSD">대학원(박사)</option>
+					<option value="GSMD">대학원(석사)</option>
+					<!-- Graduated School Master's Degree -->
+					<option value="GSDD">대학원(박사)</option>
+					<!-- Graduated School Doctor's Degree -->
 				</select>
 			</div>
-			<!--
-			1) 중졸, 고졸시에는 전공 안 뜨게?
-			2) 기타 넣어서 직접입력은 어떤지  -->
+
 			<div class="form-group">
 				<label for="user_major">전공</label>
-				<textarea class="form-control" rows="5" id="user_major"></textarea>
+				<textarea class="form-control" rows="3" id="user_major"
+					name="user_major"></textarea>
 			</div>
-			
-			<!--
-			네이버: 가입페이지 전에 이용약관.
-			<button type="reset" class="btn btn-danger btn-lg btn-block">취소하기</button>
-			
-			-->
+
 			<button type="submit" class="btn btn-primary btn-lg btn-block">가입하기</button>
 		</form>
 	</div>

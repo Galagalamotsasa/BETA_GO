@@ -16,7 +16,7 @@ public class DBManagement {
 			e.printStackTrace();
 		}
 	      con = DriverManager.getConnection("jdbc:mariadb://192.168.2.13:3306/miniproject",
-	            "chr","1234");
+	            "root","1234");
 	      if(con!=null){
 	    	  System.out.println("데이터베이스에 연결 되었습니다");
 	      }	      

@@ -1,4 +1,4 @@
-package com.betago.controller;
+package com.db.controller;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;

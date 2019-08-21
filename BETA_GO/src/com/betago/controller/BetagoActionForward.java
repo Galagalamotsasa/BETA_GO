@@ -1,4 +1,4 @@
-package com.betago.controller;
+package com.db.controller;
 
 public class BetagoActionForward {
 	private boolean isRedirect=false; // 리다이렉트 여부 (true : 리다이렉트 한다. false : dispatcher.forward 한다.)

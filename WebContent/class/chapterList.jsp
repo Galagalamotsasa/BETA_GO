@@ -9,6 +9,9 @@
 <meta name="description" content="">
 <meta name="keywords" content="">
 <meta name="viewport" content="width, initial-scale=1.0">
+<link rel="stylesheet" href="./css/slick.css">
+<link rel="stylesheet" href="./css/common.css">
+<link rel="stylesheet" href="./css/home.css">
 <script src="./js/jquery.min.js"></script>
 <script src="./js/common.js"></script>
 <link href="./css/bootstrap.min.css" type="text/css" rel="stylesheet" />
@@ -214,6 +217,26 @@ footer ul li a div {
 	line-height: 0px;
 	color: #000;
 }
+
+a:hover {
+	text-decoration: none;
+}
+
+.abtn {
+	text-decoration: none;
+	font-size: 2rem;
+	color: white;
+	padding: 10px 20px 10px 20px;
+	margin: 20px;
+	display: inline-block;
+	border-radius: 10px;
+	transition: all 0.1s;
+	text-shadow: 0px -2px rgba(0, 0, 0, 0.44);
+	font-family: 'Lobster', cursive;
+	background-color: #1f75d9;
+	border-bottom: 5px solid #165195;
+	border-bottom: 2px solid #165195;
+}
 </style>
 
 </head>
@@ -225,8 +248,8 @@ footer ul li a div {
 				<div class="inner">
 					<h1>
 						<a href="./index.html"> <img class="logo_mo"
-							src="../img/logo_mo1.png" alt="베타GO"> <img class="logo_pc"
-							src="../img/logo_pc1.png" alt="베타GO">
+							src="../img/logo_mo1.png" alt="BETA-GO"> <img
+							class="logo_pc" src="../img/logo_pc1.png" alt="BETA-GO">
 						</a>
 					</h1>
 					<button class="gnbOpen">
@@ -264,7 +287,6 @@ footer ul li a div {
 			<div class='single-item'></div>
 			<div class="inner">
 
-
 				<div class="jumbotron">
 					<div class="media">
 						<div class="media-left media-top">
@@ -273,24 +295,25 @@ footer ul li a div {
 						</div>
 						<div class="media-body">
 							<h4 class="media-heading">${selectedLecture.class_title }</h4>
-							<p>강사 : ${selectedLecture.user_name} </p>
+							<p>강사 : ${selectedLecture.user_name}</p>
 							<a href="#" class="videoLink" alt="동영상 링크"> <img
-								src="../img/default.jpg" class="img-thumbnail"
-								alt="동영상 썸네일">
+								src="../img/default.jpg" class="img-thumbnail
+								alt="동영상썸네일">
 							</a>
 							<h1>강의제목</h1>
 							<p>
-								<button type="button" class="btn btn-primary">
+								<a class="abtn"
+									href="BetagoController.bo?mode=classView.bo&historyno=${selectedLecture.class_no }">
 									<b>수강신청하기</b>
-								</button>
+								</a>
 							</p>
 						</div>
 					</div>
 				</div>
 				<div>
 					<h3>강의 목표</h3>
-					<p>${selectedLecture.class_object } </p>
-				</br>
+					<p>${selectedLecture.class_object }</p>
+					</br>
 					<h3>강의 설명</h3>
 					<p>${selectedLecture.class_desc }</p>
 				</div>
@@ -314,8 +337,8 @@ footer ul li a div {
 					</table>
 					<p>이수기준 총점 60점 이상</p>
 				</div>
-				
-				
+
+
 			</div>
 		</div>
 		<div class="footer">

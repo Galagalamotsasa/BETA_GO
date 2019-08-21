@@ -41,6 +41,7 @@ public class BetagoControlServlet extends HttpServlet {
 	
 	protected void doPro(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		System.out.println("서블릿 호출");
+		request.setCharacterEncoding("utf-8");
 		
 		String mode=request.getParameter("mode");		
 		
@@ -57,17 +58,6 @@ public class BetagoControlServlet extends HttpServlet {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
 				}			
-		} else if (mode.equals("classview.bo")) {
-			System.out.println("강의 상세보기");
-			action=new ClassViewAction();
-			
-			try {
-				forward=action.execute(request, response);
-			} catch (Exception e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-			
 		} else if(mode.equals("classHistory.bo")){
 			System.out.println("class_history");
 			
@@ -78,7 +68,38 @@ public class BetagoControlServlet extends HttpServlet {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
-		}
+		} else if (mode.equals("lecDetail.bo")) {   
+            System.out.println("강의 상세 페이지 보기");
+            
+            action = new BetagoLecDetailAction();
+            
+            try {
+               forward = action.execute(request, response);
+            } catch (Exception e) {
+               // TODO Auto-generated catch block
+               e.printStackTrace();
+            }
+         } else if(mode.equals("classView.bo")) {
+        	 System.out.println("수강신청");
+        	 action=new BetagoClassViewAction();
+        	 
+        	 try {
+				forward=action.execute(request, response);
+			} catch (Exception e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+        	 
+         } else if(mode.equals("classInsert.bo")) {
+        	 action=new ClassInsertAction();
+        	 
+        	 try {
+				forward=action.execute(request, response);
+			} catch (Exception e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+         }
 		
 		
 		if(forward!=null) {

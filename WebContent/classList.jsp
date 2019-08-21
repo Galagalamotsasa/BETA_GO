@@ -57,8 +57,8 @@
 				<div class="inner">
 					<h1>
 						<a href="Home.jsp"> <img class="logo_mo"
-							src="./asset/img/logo_mo.png" alt="복지GO"> <img
-							class="logo_pc" src="./asset/img/logo_pc.png" alt="복지GO">
+							src="./asset/img/logo_mo.png" alt="BETA-GO"> <img
+							class="logo_pc" src="./asset/img/logo_pc.png" alt="BETA-GO">
 						</a>
 					</h1>
 					<button class="gnbOpen">
@@ -119,7 +119,7 @@
 					</table> -->
 					<c:forEach items="${requestScope.cla }" var="cla">
 						<div class="list-group">
-							<a href="BetagoController.bo?mode=classview.bo">
+							<a href="BetagoController.bo?mode=lecDetail.bo&historyno=${cla.class_no }">
 								<div id="postlist">
 									<img class="position" src="${cla.class_img }" />
 									<div class="position" id="postContents">

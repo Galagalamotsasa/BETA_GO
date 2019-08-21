@@ -37,6 +37,24 @@ public class LecDetailSelectByHistory {
 		this.cc_final = cc_final;
 		this.cc_tot = cc_tot;
 	}
+	
+	
+
+	public LecDetailSelectByHistory( int class_no, String account_id, String class_title,
+			Date class_startdate, Date class_enddate) {	
+		this.class_no = class_no;
+		this.account_id = account_id;
+		this.class_title = class_title;
+		this.class_startdate = class_startdate;
+		this.class_enddate = class_enddate;
+	}
+
+
+
+	public LecDetailSelectByHistory(int history_no) {
+		this.history_no = history_no;
+	
+	}
 
 	public int getHistory_no() {
 		return history_no;

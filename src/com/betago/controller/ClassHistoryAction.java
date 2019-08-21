@@ -11,12 +11,12 @@ public class ClassHistoryAction implements IBetagoAction {
 	public BetagoActionForward execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		System.out.println("history");
 
-		BetagoDAO dao=dao.getInstance();
-		dao.classHistory();
+		BetagoDAO dao=BetagoDAO.getInstance();
+		
 		
 		BetagoActionForward forward=new BetagoActionForward();
 		forward.setRedirect(false);
-		forward.setPath("");
+		forward.setPath("classHistory.jsp");
 		
 		return forward;
 	}

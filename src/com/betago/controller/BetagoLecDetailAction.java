@@ -12,8 +12,7 @@ public class BetagoLecDetailAction implements IBetagoAction {
 	public BetagoActionForward execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		BetagoDAO dao = BetagoDAO.getInstance();
 		
-		int historyno = Integer.parseInt(request.getParameter("historyno"));
-		System.out.println("Action단 history_no : " + historyno);
+		int historyno = Integer.parseInt(request.getParameter("historyno"));		
 		
 		LecDetailSelectByHistory selectQ = dao.getLecDetail(historyno);
 		

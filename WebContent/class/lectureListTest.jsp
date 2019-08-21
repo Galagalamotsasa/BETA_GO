@@ -99,8 +99,8 @@ color: #fff;
 				<div class="inner">
 					<h1>
 						<a href="../index.html"> <img class="logo_mo"
-							src="../asset/img/logo_mo.png" alt="베타-GO"> <img
-							class="logo_pc" src="../asset/img/logo_pc.png" alt="베타-GO">
+							src="../img/logo_mo.png" alt="베타-GO"> <img
+							class="logo_pc" src="../img/logo_pc.png" alt="베타-GO">
 						</a>
 					</h1>
 					<button class="gnbOpen">
@@ -109,7 +109,7 @@ color: #fff;
 					<nav class="gnb">
 						<div class="gnbLogo">
 							<a href="#"> <img class="logo_mo"
-								src="../asset/img/logo_mo.png" alt="베타-GO">
+								src="../img/logo_mo.png" alt="베타-GO">
 							</a>
 						</div>
 						<ul class="depth1">
@@ -196,7 +196,7 @@ color: #fff;
 				<div class="row">
 					<div class="col-sm-4">
 					<a href="../BetagoController.bo?mode=lecDetail.bo&historyno=1" >
-						<img src="https://placehold.it/150x80?text=IMAGE"
+						<img src="../img/3531474460_wrl2txTp_20190709050843.jpg"
 							class="img-responsive" style="width: 100%" alt="Image">
 						<p>빅데이터 과목</p>
 					</a>

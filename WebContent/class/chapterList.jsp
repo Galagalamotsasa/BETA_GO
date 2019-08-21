@@ -12,8 +12,7 @@
 <script src="./js/jquery.min.js"></script>
 <script src="./js/common.js"></script>
 <link href="./css/bootstrap.min.css" type="text/css" rel="stylesheet" />
-<script
-	src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+<script	src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
 <link rel="stylesheet" href="./css/slick.css">
 <link rel="stylesheet" href="./css/common.css">
 
@@ -25,10 +24,6 @@
 
 .swiper-container img {
 	width: 100%;
-}
-
-.section {
-	text-align: center;
 }
 
 .section h3 {
@@ -225,8 +220,8 @@ footer ul li a div {
 				<div class="inner">
 					<h1>
 						<a href="./index.html"> <img class="logo_mo"
-							src="../img/logo_mo1.png" alt="베타GO"> <img class="logo_pc"
-							src="../img/logo_pc1.png" alt="베타GO">
+							src="img/logo_mo1.png" alt="베타GO"> <img class="logo_pc"
+							src="img/logo_pc1.png" alt="베타GO">
 						</a>
 					</h1>
 					<button class="gnbOpen">
@@ -235,7 +230,7 @@ footer ul li a div {
 
 					<nav class="gnb">
 						<div class="gnbLogo">
-							<a href="#"> <img class="logo_mo" src="../img/logo_mo1.png"
+							<a href="#"> <img class="logo_mo" src="img/logo_mo1.png"
 								alt="베타GO">
 							</a>
 						</div>
@@ -268,17 +263,18 @@ footer ul li a div {
 				<div class="jumbotron">
 					<div class="media">
 						<div class="media-left media-top">
-							<img src="${selectedLecture.class_img }" class="media-object"
+							<img src="img/3531474460_wrl2txTp_20190709050843.jpg" class="media-object"
 								style="width: 60px">
 						</div>
 						<div class="media-body">
-							<h4 class="media-heading">${selectedLecture.class_title }</h4>
+							<h4 class="media-heading"></h4>
 							<p>강사 : ${selectedLecture.user_name} </p>
-							<a href="#" class="videoLink" alt="동영상 링크"> <img
+							<!-- <a href="#" class="videoLink" alt="동영상 링크"> <img
 								src="../img/default.jpg" class="img-thumbnail"
-								alt="동영상 썸네일">
+								alt="동영상 썸네일"> -->
 							</a>
-							<h1>강의제목</h1>
+							<h1>${selectedLecture.class_title }</h1>
+							<p>강사 : ${selectedLecture.user_name} </p>
 							<p>
 								<button type="button" class="btn btn-primary">
 									<b>수강신청하기</b>
@@ -287,7 +283,7 @@ footer ul li a div {
 						</div>
 					</div>
 				</div>
-				<div>
+				<div class="jumbotron">
 					<h3>강의 목표</h3>
 					<p>${selectedLecture.class_object } </p>
 				</br>
@@ -296,23 +292,28 @@ footer ul li a div {
 				</div>
 				<div>
 					<h3>이수 기준</h3>
-					<table border="1">
-						<tr>
-							<th>구분</th>
-							<th>퀴즈</th>
-							<th>중간시험</th>
-							<th>기말시험</th>
-							<th>총점</th>
-						</tr>
-						<tr>
-							<td>점수</td>
-							<td>${selectedLecture.cc_quiz}</td>
-							<td>${selectedLecture.cc_mid}</td>
-							<td>${selectedLecture.cc_final}</td>
-							<td>${selectedLecture.cc_tot}</td>
-						</tr>
+					<p>* 평가점수 및 이수증 발급기준</p>
+					<table class="table table-striped">
+						<thead>
+							<tr>
+								<th>구분</th>
+								<th>퀴즈</th>
+								<th>중간시험</th>
+								<th>기말시험</th>
+								<th>총점</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<td>점수</td>
+								<td>${selectedLecture.cc_quiz}</td>
+								<td>${selectedLecture.cc_mid}</td>
+								<td>${selectedLecture.cc_final}</td>
+								<td>${selectedLecture.cc_tot}</td>
+							</tr>
+						</tbody>
 					</table>
-					<p>이수기준 총점 60점 이상</p>
+					<p>※ 이수기준 총점 60점 이상</p>
 				</div>
 				
 				

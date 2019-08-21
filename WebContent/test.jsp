@@ -8,7 +8,11 @@
 <script	src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
 <script>
 
-document.ready() {
+$(document).ready(function() {
+	getYoutube(); // 챕터 리스트 불러오기
+});
+
+function getYoutube() {
 	//YOUTUBE DATA API v3. Search
 	//help for params : https://developers.google.com/youtube/v3/docs/search/list#--
 

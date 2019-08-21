@@ -17,6 +17,8 @@
 <link rel="stylesheet" href="./css/common.css">
 
 <style>
+
+
 .swiper-container {
 	max-width: 1920px;
 	margin: 0 auto;
@@ -210,7 +212,36 @@ footer ul li a div {
 	color: #000;
 }
 </style>
-
+<script>
+$(document).ready(function() {
+		getChapterList(); // 챕터 리스트 불러오기
+	});
+	
+function getChapterList() {
+	$.ajax({ 
+		type : "GET",
+		url : "BetagoController.bo?mode=getChapterList.bo&classno=${selectedLecture.class_no}",
+		dataType : "json", // 서버에서 반환되는 데이터 타입
+		success : function(data) {
+			console.log(data);
+			var output = "<table class='table table-hover table-striped'>";
+			output += "<thead><tr><th>회차</th><th>제목</th><th>목표</th><th>상세정보</th><th>시작일</th></tr></thead>"
+			for (var i = 0; i < data.length; i++) {
+				output += "<tr><td>" + (i+1) + "</td><td>" + data[i].chapter_title + "</td><td>" + data[i].chapter_object + "</td><td>" + data[i].chapter_startdate  + "</td><td>" + data[i].chapter_enddate + "</td></tr>";
+			}
+			output += "</table>";
+			
+			$("#chapterList").append(output);
+		},
+		error : function(res) {
+			console.log(res.responseText);
+		},
+		complete : function() {
+			
+		}
+	}); // ajax 끝
+}
+</script>
 </head>
 
 <body>
@@ -291,9 +322,15 @@ footer ul li a div {
 					<p>${selectedLecture.class_desc }</p>
 				</div>
 				<div>
+					<h3>챕터</h3>
+					<p id="chapterList"></p>
+				</div>
+				<div>
 					<h3>이수 기준</h3>
 					<p>* 평가점수 및 이수증 발급기준</p>
-					<table class="table table-striped">
+
+					<table class="table table-hover table-striped">
+
 						<thead>
 							<tr>
 								<th>구분</th>

@@ -45,8 +45,8 @@ function check(){  //회원가입 유효성 검사
 		result = false;
 	}
 	
-	if (isdup == result) {
-		return false;
+	if (idisdup && result) {
+		return true;
 	} else {
 		return false;
 	}
@@ -54,9 +54,8 @@ function check(){  //회원가입 유효성 검사
 
 }
 	
-	function isdup(){
+	function idisdup(){
 		var account_id = $('#account_id').val();
-
 		var result = true;
 		if (account_id.length >= 5) { 
 			$.ajax({ 
@@ -84,7 +83,10 @@ function check(){  //회원가입 유효성 검사
 		return result;
 	}
 	
-
+	$(document).ready(function() {
+		$('#uid').keyup(idisdup);
+		
+	});
 
 </script>
 <style>

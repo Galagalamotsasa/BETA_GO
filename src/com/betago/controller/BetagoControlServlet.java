@@ -24,6 +24,7 @@ public class BetagoControlServlet extends HttpServlet {
 	/**
 	 * @see HttpServlet#HttpServlet()
 	 */
+
 	public BetagoControlServlet() {
 		super();
 		// TODO Auto-generated constructor stub
@@ -33,8 +34,9 @@ public class BetagoControlServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse
 	 *      response)
 	 */
-	protected void doGet(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException {
+
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+
 		doPro(request, response);
 	}
 
@@ -42,25 +44,47 @@ public class BetagoControlServlet extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse
 	 *      response)
 	 */
-	protected void doPost(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException {
-		// TODO Auto-generated method stub
+
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		doPro(request, response);
 	}
 
-	protected void doPro(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException {
-		System.out.println("서블릿호출");
+	protected void doPro(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		System.out.println("BetagoControlServlet 호출");
+		
 		String mode = request.getParameter("mode");
-
-		BetagoActionForward forward = null;
-		IBetagoAction action = null;
-
+		System.out.println("mode : " + mode);
+		
+		BetagoActionForward forward=null;
+		IBetagoAction action=null;
+		
 		if (mode != null) {
-			System.out.println("mode: " + mode);
+			System.out.println("mode : " + mode);
+			
+			if (mode.equals("lecDetail.bo")) {	
+				System.out.println("강의 상세 페이지 보기");
+				
+				action = new BetagoLecDetailAction();
+				
+				try {
+					forward = action.execute(request, response);
+				} catch (Exception e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+			} else if(mode.equals("getChapterList.bo")) {
+				System.out.println("챕터리스트 JSON으로 불러오기");
+				
+				action = new BetagoChapterListJSON();
 
-			if (mode.equals("insert.do")) {
-				// System.out.println("Account insert");
+				try {
+					forward = action.execute(request, response);
+				} catch (Exception e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+			} else if (mode.equals("insert.do")) {
+				System.out.println("회원가입");
 				action = new AccountInsertAction();
 				try {
 					forward = action.execute(request, response);
@@ -69,7 +93,8 @@ public class BetagoControlServlet extends HttpServlet {
 					e.printStackTrace();
 				}
 
-			}
+			} 
+			
 			if (forward != null) {
 				if (forward.isRedirect()) { // 리다이렉트 해야 할때 - forward.isRedirect 값이 참
 					response.sendRedirect(forward.getPath()); // forward 객체의 path 경로로 redirect
@@ -79,17 +104,19 @@ public class BetagoControlServlet extends HttpServlet {
 				}
 			}
 
+			
 		} else {
 			response.setContentType("text/html; charset=utf-8");
 			PrintWriter out = response.getWriter();
-
+			
 			out.print("<script>");
 			out.print("alert('잘못된 요청입니다!');");
-			out.print("location.href='index.jsp';");
+			out.print("location.href='Home.jsp';");
 			out.print("</script>");
-
 		}
+		
+		
+		
 
 	}
-
-}
+	}

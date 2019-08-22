@@ -86,6 +86,10 @@ public class BetagoControlServlet extends HttpServlet {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
 				}
+			} else if(mode.equals("videoWatch.bo")) {
+				System.out.println("클릭한 비디오 보기");
+				
+				action = new BetagoVideoWatchAction();
 			}
 			
 			// --------------- 페이지 이동 -------------------------------------

@@ -261,65 +261,26 @@ footer ul li a div {
 		<div class="section">
 			<div class='single-item'></div>
 			<div class="inner">
-
-
-
 				<div class="jumbotron">
-					<h3>챕터 명</h3>
-					<p>${selectedChapter.chapter_title }</p>
+					<iframe width="560" height="315" src="https://www.youtube.com/embed/${selectedVideo.video_link }" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 					</br>
-					<h3>챕터 목표</h3>
-					<p>${selectedChapter.chapter_object }</p>
+					<h3>${selectedVideo.video_title }</h3>
 					</br>
-					<h3>챕터 설명</h3>
-					<p>${selectedChapter.chapter_detail }</p>
-					<h3>챕터 진행 기간</h3>
-					<p>${selectedChapter.chapter_startdate } ~ ${selectedChapter.chapter_enddate }</p>
+					<h4>조회수?</h4>
+					</hr>
+					<h4>카테고리</h4>
+					<p><a href="./BetagoController.bo?mode=searchVideoCategory.bo&vtype=${selectedVideo.video_category_no }">${selectedVideo.video_category_title }</a></p>
+					<p>${selectedVideo.video_category_desc }</p>
 				</div>
-				<div class="card" style="width: 400px">
-					<img class="card-img-top" src="${selectedChapter.video_thumbnail }" alt="Video image">
-					<div class="card-body">
-						<h4 class="card-title">${selectedChapter.video_title }</h4>
-						<p class="card-text">이 챕터에서 사용하는 동영상 자료 입니다.</p>
-						<a href="#" class="btn btn-primary" onclick="location.href='BetagoController.bo?videoWatch.bo&videono=${selectedChapter.video_no}'">동영상 보기</a>
-					</div>
-				</div>
+				
 				<div>
-					<h3>과제</h3>
-					<div>이런저런 퀴즈를 풀어야 합니다.</div>
-
-					<table class="table table-hover table-striped">
-
-						<thead>
-							<tr>
-								<th>구분</th>
-								<th>퀴즈</th>
-								<th>시간</th>
-								<th>점수</th>
-								<th>총점</th>
-							</tr>
-						</thead>
-						<tbody>
-							<tr>
-								<td>문제1</td>
-								<td>-</td>
-								<td>-</td>
-								<td>-</td>
-								<td>-</td>
-							</tr>
-							<tr>
-								<td>문제2</td>
-								<td>-</td>
-								<td>-</td>
-								<td>-</td>
-								<td>-</td>
-							</tr>
-						</tbody>
-					</table>
-					<p>※ 이수기준을 확인하세요</p>
+					<h3>노트</h3>
+					<div class="form-group">
+  						<label for="comment">연습해보세요 :</label>
+						<textarea class="form-control" rows="10" id="comment"></textarea>
+					</div>
+					<p>* 티끌모아 태산이다.</p>
 				</div>
-
-
 			</div>
 		</div>
 		<div class="footer">

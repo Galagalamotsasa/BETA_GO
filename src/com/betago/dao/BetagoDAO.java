@@ -13,6 +13,7 @@ import javax.naming.NamingException;
 import com.betago.dto.ChapterJoinVideo;
 import com.betago.dto.ChapterVO;
 import com.betago.dto.LecDetailSelectByHistory;
+import com.betago.dto.VideoJoinCategory;
 import com.ssj.util.DBManagement;
 
 public class BetagoDAO {
@@ -111,6 +112,33 @@ public class BetagoDAO {
 		return chapterList;
 	}
 	
-	
+	public VideoJoinCategory getVideoDetail(int videono) throws SQLException, ClassNotFoundException {
+		String query = "select v.video_no, v.video_title, v.video_link, vc.video_category_no, vc.video_category_title, vc.video_category_desc from miniproject.video v inner join video_categor vs on v.video_category_no = vc.video_category_no where v.video_no = ?";
+		
+		Connection con = DBManagement.getConnection();
+		
+		PreparedStatement pstmt = con.prepareStatement(query);
+		
+		pstmt.setInt(1, videono);
+		
+		System.out.println(pstmt);
+		
+		ResultSet rs = pstmt.executeQuery();
+		
+		VideoJoinCategory video = null;
+		
+		while(rs.next()) {
+			video = new VideoJoinCategory(rs.getInt("video_no"), rs.getString("video_title"), rs.getString("video_link"), rs.getInt("video_category_no"), rs.getString("video_category_title"), rs.getString("video_category_desc"));
+		}
+		
+		System.out.println("DAO : " + video);
+		
+		rs.close();
+		pstmt.close();
+		con.close();
+		
+		
+		return video;
+	}
 	
 }

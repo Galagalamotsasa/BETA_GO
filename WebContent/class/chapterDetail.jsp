@@ -12,13 +12,12 @@
 <script src="./js/jquery.min.js"></script>
 <script src="./js/common.js"></script>
 <link href="./css/bootstrap.min.css" type="text/css" rel="stylesheet" />
-<script	src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
 <link rel="stylesheet" href="./css/slick.css">
 <link rel="stylesheet" href="./css/common.css">
 
 <style>
-
-
 .swiper-container {
 	max-width: 1920px;
 	margin: 0 auto;
@@ -213,35 +212,7 @@ footer ul li a div {
 }
 </style>
 <script>
-$(document).ready(function() {
-		getChapterList(); // 챕터 리스트 불러오기
-	});
 	
-function getChapterList() {
-	$.ajax({ 
-		type : "GET",
-		url : "BetagoController.bo?mode=getChapterList.bo&classno=${selectedLecture.class_no}",
-		dataType : "json", // 서버에서 반환되는 데이터 타입
-		success : function(data) {
-			console.log(data);
-			var output = "<table class='table table-hover table-striped'>";
-			output += "<thead><tr><th>회차</th><th>제목</th><th>목표</th><th>시작일</th><th>종료일</th></tr></thead>"
-			for (var i = 0; i < data.length; i++) {
-				output += "<tr><td>" + (i+1) + "</td><td><a href='./BetagoController.bo?mode=chapterDesc.bo&chapterno=" + data[i].chapter_no + "'>" + data[i].chapter_title + "</a></td><td>" + data[i].chapter_object + "</td><td>" + data[i].chapter_startdate  + "</td><td>" + data[i].chapter_enddate + "</td></tr>";
-			}
-			output += "</table>";
-			
-			
-			$("#chapterList").append(output);
-		},
-		error : function(res) {
-			console.log(res.responseText);
-		},
-		complete : function() {
-			
-		}
-	}); // ajax 끝
-}
 </script>
 </head>
 
@@ -292,43 +263,30 @@ function getChapterList() {
 			<div class="inner">
 
 
+
 				<div class="jumbotron">
-					<div class="media">
-						<div class="media-left media-top">
-							<img src="img/3531474460_wrl2txTp_20190709050843.jpg" class="media-object"
-								style="width: 60px">
-						</div>
-						<div class="media-body">
-							<h4 class="media-heading"></h4>
-							<p>강사 : ${selectedLecture.user_name} </p>
-							<!-- <a href="#" class="videoLink" alt="동영상 링크"> <img
-								src="../img/default.jpg" class="img-thumbnail"
-								alt="동영상 썸네일"> -->
-							</a>
-							<h1>${selectedLecture.class_title }</h1>
-							<p>강사 : ${selectedLecture.user_name} </p>
-							<p>
-								<button type="button" class="btn btn-primary">
-									<b>수강신청하기</b>
-								</button>
-							</p>
-						</div>
+					<h3>챕터 명</h3>
+					<p>${selectedChapter.chapter_title }</p>
+					</br>
+					<h3>챕터 목표</h3>
+					<p>${selectedChapter.chapter_object }</p>
+					</br>
+					<h3>챕터 설명</h3>
+					<p>${selectedChapter.chapter_detail }</p>
+					<h3>챕터 진행 기간</h3>
+					<p>${selectedChapter.chapter_startdate } ~ ${selectedChapter.chapter_enddate }</p>
+				</div>
+				<div class="card" style="width: 400px">
+					<img class="card-img-top" src="${selectedChapter.video_thumbnail }" alt="Video image">
+					<div class="card-body">
+						<h4 class="card-title">${selectedChapter.video_title }</h4>
+						<p class="card-text">이 챕터에서 사용하는 동영상 자료 입니다.</p>
+						<a href="#" class="btn btn-primary">동영상 보기</a>
 					</div>
 				</div>
-				<div class="jumbotron">
-					<h3>강의 목표</h3>
-					<p>${selectedLecture.class_object } </p>
-				</br>
-					<h3>강의 설명</h3>
-					<p>${selectedLecture.class_desc }</p>
-				</div>
 				<div>
-					<h3>챕터</h3>
-					<p id="chapterList"></p>
-				</div>
-				<div>
-					<h3>이수 기준</h3>
-					<p>* 평가점수 및 이수증 발급기준</p>
+					<h3>과제</h3>
+					<div>이런저런 퀴즈를 풀어야 합니다.</div>
 
 					<table class="table table-hover table-striped">
 
@@ -336,25 +294,32 @@ function getChapterList() {
 							<tr>
 								<th>구분</th>
 								<th>퀴즈</th>
-								<th>중간시험</th>
-								<th>기말시험</th>
+								<th>시간</th>
+								<th>점수</th>
 								<th>총점</th>
 							</tr>
 						</thead>
 						<tbody>
 							<tr>
-								<td>점수</td>
-								<td>${selectedLecture.cc_quiz}</td>
-								<td>${selectedLecture.cc_mid}</td>
-								<td>${selectedLecture.cc_final}</td>
-								<td>${selectedLecture.cc_tot}</td>
+								<td>문제1</td>
+								<td>-</td>
+								<td>-</td>
+								<td>-</td>
+								<td>-</td>
+							</tr>
+							<tr>
+								<td>문제2</td>
+								<td>-</td>
+								<td>-</td>
+								<td>-</td>
+								<td>-</td>
 							</tr>
 						</tbody>
 					</table>
-					<p>※ 이수기준 총점 60점 이상</p>
+					<p>※ 이수기준을 확인하세요</p>
 				</div>
-				
-				
+
+
 			</div>
 		</div>
 		<div class="footer">

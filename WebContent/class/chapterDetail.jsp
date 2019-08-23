@@ -281,7 +281,7 @@ footer ul li a div {
 					<div class="card-body">
 						<h4 class="card-title">${selectedChapter.video_title }</h4>
 						<p class="card-text">이 챕터에서 사용하는 동영상 자료 입니다.</p>
-						<a href="#" class="btn btn-primary" onclick="location.href='BetagoController.bo?videoWatch.bo&videono=${selectedChapter.video_no}'">동영상 보기</a>
+						<a href="#" class="btn btn-primary" onclick="location.href='./BetagoController.bo?mode=videoWatch.bo&videono=${selectedChapter.video_no}'">동영상 보기</a>
 					</div>
 				</div>
 				<div>

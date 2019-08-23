@@ -41,13 +41,13 @@ public class BetagoDAO {
 		
 		Connection con = DBManagement.getConnection();
 		
-		CallableStatement pstmt = con.prepareCall(query);
+		CallableStatement cstmt = con.prepareCall(query);
 		
-		pstmt.setInt(1, historyno);
+		cstmt.setInt(1, historyno);
 		
-		System.out.println(pstmt);
+		System.out.println(cstmt);
 		
-		ResultSet rs = pstmt.executeQuery();
+		ResultSet rs = cstmt.executeQuery();
 		
 		LecDetailSelectByHistory selectQ = null;
 		
@@ -57,7 +57,7 @@ public class BetagoDAO {
 		System.out.println("DAO : " + selectQ);
 		
 		rs.close();
-		pstmt.close();
+		cstmt.close();
 		con.close();
 		
 		
@@ -113,28 +113,29 @@ public class BetagoDAO {
 	}
 	
 	public VideoJoinCategory getVideoDetail(int videono) throws SQLException, ClassNotFoundException {
-		String query = "select v.video_no, v.video_title, v.video_link, vc.video_category_no, vc.video_category_title, vc.video_category_desc from miniproject.video v inner join video_categor vs on v.video_category_no = vc.video_category_no where v.video_no = ?";
+		String query = "{ call miniproject.viewVideoAddCnt(?) }";
+		// String query = "select v.video_no, v.video_title, v.video_link, vc.video_category_no, vc.video_categroy_title, vc.video_category_desc from miniproject.video v inner join miniproject.video_category vc on v.video_category_no = vc.video_category_no where v.video_no = ?";
 		
 		Connection con = DBManagement.getConnection();
 		
-		PreparedStatement pstmt = con.prepareStatement(query);
+		CallableStatement cstmt = con.prepareCall(query);
 		
-		pstmt.setInt(1, videono);
+		cstmt.setInt(1, videono);
 		
-		System.out.println(pstmt);
+		System.out.println(cstmt);
 		
-		ResultSet rs = pstmt.executeQuery();
+		ResultSet rs = cstmt.executeQuery();
 		
 		VideoJoinCategory video = null;
 		
 		while(rs.next()) {
-			video = new VideoJoinCategory(rs.getInt("video_no"), rs.getString("video_title"), rs.getString("video_link"), rs.getInt("video_category_no"), rs.getString("video_category_title"), rs.getString("video_category_desc"));
+			video = new VideoJoinCategory(rs.getInt("video_no"), rs.getString("video_title"), rs.getString("video_link"), rs.getInt("video_viewcnt"), rs.getInt("video_category_no"), rs.getString("video_category_title"), rs.getString("video_category_desc"));
 		}
 		
 		System.out.println("DAO : " + video);
 		
 		rs.close();
-		pstmt.close();
+		cstmt.close();
 		con.close();
 		
 		

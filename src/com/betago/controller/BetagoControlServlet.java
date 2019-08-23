@@ -90,6 +90,13 @@ public class BetagoControlServlet extends HttpServlet {
 				System.out.println("클릭한 비디오 보기");
 				
 				action = new BetagoVideoWatchAction();
+				
+				try {
+					forward = action.execute(request, response);
+				} catch (Exception e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
 			}
 			
 			// --------------- 페이지 이동 -------------------------------------

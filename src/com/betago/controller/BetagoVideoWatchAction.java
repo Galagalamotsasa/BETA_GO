@@ -10,6 +10,7 @@ public class BetagoVideoWatchAction implements IBetagoAction {
 
 	@Override
 	public BetagoActionForward execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
+		
 		BetagoDAO dao = BetagoDAO.getInstance();
 		
 		int videono = Integer.parseInt(request.getParameter("videono"));

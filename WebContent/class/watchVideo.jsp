@@ -1,14 +1,19 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+
 <!DOCTYPE html>
-<html lang="ko">
+<html lang="en">
 
 <head>
-<title>Beta-GO</title>
-<meta charset="UTF-8">
+
+<meta charset="utf-8">
+<meta name="viewport"
+	content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <meta name="description" content="">
-<meta name="keywords" content="">
-<meta name="viewport" content="width, initial-scale=1.0">
+<meta name="author" content="">
+
+<title>비디오 보기</title>
 <script src="./js/jquery.min.js"></script>
 <script src="./js/common.js"></script>
 <link href="./css/bootstrap.min.css" type="text/css" rel="stylesheet" />
@@ -18,207 +23,28 @@
 <link rel="stylesheet" href="./css/common.css">
 
 <style>
-.swiper-container {
-	max-width: 1920px;
-	margin: 0 auto;
-}
-
-.swiper-container img {
-	width: 100%;
-}
-
-.section h3 {
-	margin-top: 35px;
-	font-size: 22px;
-	font-weight: 400;
-}
-
-.section h3+p {
-	margin-top: 10px;
-}
-
-.section .single-item .slick-arrow {
-	z-index: 1;
-	position: absolute;
-	top: 50%;
-	width: 50px;
-	height: 50px;
-	margin-top: -25px;
-	border: none;
-	font-size: 0;
-	color: transparent;
-	background-color: transparent;
-	background: url(./asset/img/arrow.png) no-repeat center center;
-	background-size: 50px;
-}
-
-.section .single-item .slick-dots {
-	position: absolute;
-	bottom: 20px;
-	width: 100%;
-}
-
-.section .single-item .slick-dots li {
-	display: inline-block;
-	margin: 0 7px;
-	font-size: 0;
-	color: transparent;
-}
-
-.section .single-item .slick-dots li button {
-	width: 10px;
-	height: 10px;
-	background-color: #fff;
-	border: none;
-	border-radius: 50%;
-}
-
-.section .single-item .slick-dots li.slick-active button {
-	background-color: #abc5d6;
-}
-
-.section .single-item .item {
-	height: 500px;
-	background-repeat: no-repeat;
-	background-position: center center;
-	background-size: cover;
-}
-
-.section .single-item .slick-prev {
-	left: 0;
-	transform: rotate(180deg);
-}
-
-.section .single-item .slick-next {
-	right: 0;
-}
-
-.section .bestList {
-	margin-top: 40px;
-}
-
-.section .bestList .listItem {
-	float: left;
-	overflow: hidden;
-	width: 48%;
-	height: 200px;
-	margin: 10px 1% 0;
-	line-height: 200px;
-}
-
-.section .bestList .listItem a {
+section {
 	position: relative;
-	display: block;
-	height: 100%;
+	top: 70px;
 }
 
-.section .bestList .listItem a .imgWrap {
-	position: absolute;
-	top: 0;
-	right: 0;
-	bottom: 0;
-	left: 0;
-	background-repeat: no-repeat;
-	background-position: center center;
-	background-size: cover;
-	transition: transform .2s;
-}
-
-.section .bestList .listItem a:hover .imgWrap, .section .bestList .listItem a:focus .imgWrap
-	{
-	transform: scale(1.1);
-}
-
-.section .bestList .listItem a .txtWrap {
-	position: absolute;
-	top: 0;
-	right: 0;
-	bottom: 0;
-	left: 0;
-	background-color: rgba(0, 0, 0, .5);
-	color: #fff;
-	transition: background .2s;
-}
-
-.section .bestList .listItem a:hover .txtWrap, .section .bestList .listItem a:focus .txtWrap
-	{
-	background-color: rgba(0, 0, 0, .2);
-}
-
-.section .bestList .listItem img {
-	width: 100%;
-	display: block;
-}
-
-.section .bestList .listItem p {
-	display: none;
-}
-
-@media all and (min-width:1024px) {
-	.section h3 {
-		margin-top: 70px;
-		font-size: 28px;
-	}
-	.section .bestList .listItem {
-		width: 22%;
-		height: 264px;
-		margin: 10px 0 0 3%;
-		line-height: 1;
-	}
-	.section .bestList .listItem a>.txtWrap {
-		padding: 30px 20px;
-	}
-	.section .bestList .listItem strong:after {
-		content: '';
-		display: block;
-		width: 40px;
-		height: 2px;
-		margin: 15px auto 30px;
-		background-color: #fff;
-	}
-	.section .bestList .listItem p {
-		display: block;
-	}
-	.section .bestList li:first-child {
-		margin-left: 0;
-	}
-}
-
-footer {
-	width: 100%;
-	height: 65px;
-	position: fixed;
-	bottom: 0;
-	border-top: 2px solid black;
-	background-color: white;
-}
-
-footer ul li {
-	/* °¢ ¸Þ´ºµé*/
+.card {
+	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+	trainsition: 0.3s;
+	width: 30%;
+	boarder-radius: 5px;
+	margin-right: 10px;
+	margin-botton: 10px;
 	float: left;
-	width: 33.333%;
-	list-style-type: none;
-	text-align: center;
-	font-size: 1em;
 }
 
-footer ul li a img {
-	height: 45px;
-}
-
-footer ul li a div {
-	line-height: 0px;
-	color: #000;
+.card .container {
+	margin-top: 5px;
 }
 </style>
-<script>
-	
-</script>
 </head>
-
 <body>
-	<div class="wrap">
-		<div class="header">
+	<div class="header">
 			<div class="gnbWrap">
 				<div class="inner">
 					<h1>
@@ -258,174 +84,30 @@ footer ul li a div {
 				<!--                </form>-->
 			</div>
 		</div>
-		<div class="section">
+	<div class="section">
 			<div class='single-item'></div>
 			<div class="inner">
 				<div class="jumbotron">
-					<iframe width="560" height="315" src="https://www.youtube.com/embed/${selectedVideo.video_link }" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 					</br>
 					<h3>${selectedVideo.video_title }</h3>
 					</br>
-					<h4>조회수?</h4>
-					</hr>
+					<h4>조회수 ${selectedVideo.video_viewcnt }</h4>
 					<h4>카테고리</h4>
-					<p><a href="./BetagoController.bo?mode=searchVideoCategory.bo&vtype=${selectedVideo.video_category_no }">${selectedVideo.video_category_title }</a></p>
+					<p><button type="button" class="btn btn-primary" onclick='location.href="./BetagoController.bo?mode=searchVideoCategory.bo&vtype=${selectedVideo.video_category_no }"'>#${selectedVideo.video_category_title }</button></p>
 					<p>${selectedVideo.video_category_desc }</p>
-				</div>
-				
-				<div>
+					<!-- <div style="float: left;">-->
+					<iframe width="900" height="470" src="https://www.youtube.com/embed/${selectedVideo.video_link }" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+					</hr>
 					<h3>노트</h3>
 					<div class="form-group">
   						<label for="comment">연습해보세요 :</label>
 						<textarea class="form-control" rows="10" id="comment"></textarea>
 					</div>
 					<p>* 티끌모아 태산이다.</p>
+					<!--</div>-->
 				</div>
 			</div>
 		</div>
-		<div class="footer">
-			<div class="footer1">
-				<div class="inner">
-					<ul class="clearFix">
-						<li><a href=#>이용약관</a></li>
-						<li><a href=#>개인정보 처리방침</a></li>
-						<li><a href=#>오시는길</a></li>
-					</ul>
-				</div>
-			</div>
-			<div class="footer2">
-				<div class="inner">
-					<address>서울시 금천구 가산디지털2로 대륭테크노타운 3차</address>
-					<a href="tel:02.000.0000">문의전화 02)000-0000 </a>
-					<div>Copyright &copy; 자바왕. All Right Reserved.</div>
-				</div>
-			</div>
-			<a href="#" class="topButton">TOP</a>
-		</div>
-	</div>
 
-	<footer class="mobile_footer">
-		<ul>
-			<li id="level"><a href="./map.html"> <img
-					src='./img/adventurerblk.png' id='levelFooter'
-					style="margin-bottom: 5px;" />
-					<div>지도</div>
-			</a></li>
-
-			<li id="mountain"><a href="./region.html"> <img
-					src='./img/goalsblk.png' id='mountainFooter'
-					style="margin-bottom: 5px;" />
-					<div>명산</div>
-			</a></li>
-
-			<li id="community"><a href="./community.html"> <img
-					src='./img/friendshipblk.png' id='communityFooter'
-					style="margin-bottom: 5px;" />
-					<div>커뮤니티</div>
-			</a></li>
-		</ul>
-	</footer>
-	<script src="https://code.jquery.com/jquery-3.4.0.min.js"></script>
-	<script src="./asset/js/slick.min.js"></script>
-	<script src="./asset/js/common.js"></script>
-	<script>
-		$(".single-item").slick({
-			dots : true,
-			autoplay : true,
-			autoplaySpeed : 3000
-		});
-	</script>
-	<script>
-		$(".searchText").keydown(
-				function(k) { //버튼이 아닌 텍스트 에서 엔터가 일어나므로 클래스는 input text 로 지정 해준다.
-					if (k.keyCode == 13) { //keycode 13이 엔터시다.
-						location.href = "./sub/area_list.html?q="
-								+ $(".searchText").val();
-					}
-				});
-
-		//키워드 돋보기 클릭시
-		function Magnifying() {
-			location.href = "./sub/area_list.html?q="
-					+ $("input.searchText").val();
-
-		}
-
-		bestimg();
-		function bestimg() {
-			//요청 url 이자리에 있어야 페이지 번호가 변경된다
-			var url = "https://api.visitkorea.or.kr/openapi/service/rest/KorService/areaBasedList?ServiceKey=XmO47zGbJrkxqEaqsQ5H4mPsp5BQcnSWf5LGCoiHLguhoLQ5Ja8hP%2BeFwSI2NZ%2Bk1O4IhOrjMGTkcYL%2F8HxabA%3D%3D&contentTypeId=&areaCode=&cat1=&cat2=&cat3=&listYN=Y&MobileOS=ETC&MobileApp=TourAPI3.0_Guide&arrange=B&numOfRows=4&_type=json";
-			$.ajax({
-				type : "GET", //통신 방식(GET/POST)
-				url : url, //통신할 페이지
-				dataType : "json", //서버로부터 받을 데이터 형식
-				success : function(data) {
-					//                    console.log(data);
-					parseJson(data);
-
-				}, //통신에 성공했을 때 실행될 콜백함수
-				error : function(res) {
-					alert("통신실패 : " + res.responseText);
-				}, //통신에 실패했을 때 실행될 콜백함수
-				complete : function() {
-					$("#loding").css("display", "none");
-
-				} //통신이 완료 되었을때 
-			});
-
-		}
-
-		function parseJson(data) {
-			$(".bestList").empty();
-			var bestList = '';
-			var item = data.response.body.items.item;
-			//            var bestList clearFix = '<div class="listItem">';
-			//            var item = data.response.body.items.item;
-			//            console.log(item);
-			item
-					.map(function(i) {
-						var link = "./sub/detail.html?contentid=" + i.contentid;
-
-						//                bestList clearFix += '<a href="' + link + '" class="list-group-item d-flex justify-content-between align-items-center">';
-						if (i.firstimage) {
-							var firstImage = i.firstimage;
-
-						} else {
-							var firstImage = "https://dummyimage.com/500x300/b7bcbd/fff&text=no-image"
-
-						}
-						if (i.addr1) {
-							var address = i.addr1;
-						} else {
-							address = "";
-						}
-						bestList += "<li class='listItem'><a href='" + link + "'><div class='imgWrap'><div class='txtWrap'><img src='" + firstImage + "'alt=''></div></div><div class='txtWrap'><strong>"
-								+ i.title
-								+ " </strong><p class='add'>"
-								+ address
-								+ "</p><p class='viewNum'></p></div></a></li>";
-					});
-			$(".bestList").append(bestList);
-		}
-
-		function getParameter(parameterName) {
-			var url = decodeURI(decodeURIComponent(location.href));
-			var result = false;
-			if (url.indexOf("?") == -1) {
-				return result;
-			} else {
-				var temp = url.split("?")[1];
-				var paraArr = temp.split("&");
-
-				for ( var i in paraArr) {
-					if (paraArr[i].indexOf(parameterName) != -1) {
-						result = true;
-						return paraArr[i].split("=")[1];
-					}
-				}
-			}
-		}
-	</script>
 </body>
-
 </html>

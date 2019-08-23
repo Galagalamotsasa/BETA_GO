@@ -10,8 +10,10 @@ import java.util.List;
 
 import javax.naming.NamingException;
 
+import com.betago.dto.ChapterJoinVideo;
 import com.betago.dto.ChapterVO;
 import com.betago.dto.LecDetailSelectByHistory;
+import com.betago.dto.VideoJoinCategory;
 import com.ssj.util.DBManagement;
 
 public class BetagoDAO {
@@ -61,6 +63,35 @@ public class BetagoDAO {
 		
 		return selectQ;
 	}
+	
+	public ChapterJoinVideo getChapterDetail(int chapterno) throws SQLException, ClassNotFoundException {
+		String query = "select ch.chapter_no, ch.class_no, ch.chapter_title, ch.chapter_object, ch.chapter_detail, ch.chapter_startdate, ch.chapter_enddate, ch.video_no, v.video_title, v.video_thumbnail from miniproject.chapter ch inner join miniproject.video v on ch.video_no = v.video_no where ch.chapter_no = ?";
+		
+		Connection con = DBManagement.getConnection();
+		
+		PreparedStatement pstmt = con.prepareStatement(query);
+		
+		pstmt.setInt(1, chapterno);
+		
+		System.out.println(pstmt);
+		
+		ResultSet rs = pstmt.executeQuery();
+		
+		ChapterJoinVideo chapter = null;
+		
+		while(rs.next()) {
+			chapter = new ChapterJoinVideo(rs.getInt("chapter_no"), rs.getInt("class_no"), rs.getString("chapter_title"), rs.getString("chapter_object"), rs.getString("chapter_detail"), rs.getDate("chapter_startdate"), rs.getDate("chapter_enddate"), rs.getInt("video_no"), rs.getString("video_title"), rs.getString("video_thumbnail"));
+		}
+		
+		System.out.println("DAO : " + chapter);
+		
+		rs.close();
+		pstmt.close();
+		con.close();
+		
+		
+		return chapter;
+	} 
 
 	public List<ChapterVO> getChapterJSON(int classno) throws ClassNotFoundException, SQLException {
 		List<ChapterVO> chapterList = new ArrayList<ChapterVO>();
@@ -81,5 +112,33 @@ public class BetagoDAO {
 		return chapterList;
 	}
 	
+	public VideoJoinCategory getVideoDetail(int videono) throws SQLException, ClassNotFoundException {
+		String query = "select v.video_no, v.video_title, v.video_link, vc.video_category_no, vc.video_category_title, vc.video_category_desc from miniproject.video v inner join video_categor vs on v.video_category_no = vc.video_category_no where v.video_no = ?";
+		
+		Connection con = DBManagement.getConnection();
+		
+		PreparedStatement pstmt = con.prepareStatement(query);
+		
+		pstmt.setInt(1, videono);
+		
+		System.out.println(pstmt);
+		
+		ResultSet rs = pstmt.executeQuery();
+		
+		VideoJoinCategory video = null;
+		
+		while(rs.next()) {
+			video = new VideoJoinCategory(rs.getInt("video_no"), rs.getString("video_title"), rs.getString("video_link"), rs.getInt("video_category_no"), rs.getString("video_category_title"), rs.getString("video_category_desc"));
+		}
+		
+		System.out.println("DAO : " + video);
+		
+		rs.close();
+		pstmt.close();
+		con.close();
+		
+		
+		return video;
+	}
 	
 }

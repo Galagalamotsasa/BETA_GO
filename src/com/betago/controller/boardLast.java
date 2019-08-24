@@ -6,14 +6,14 @@ import java.sql.SQLException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.betago.dao.BoardDAO;
+import com.betago.dao.BetagoDAO;
 
-public class boardLast implements IBoardAction {
+public class boardLast implements IBetagoAction {
 
 	@Override
-	public BoardActionForward execute(HttpServletRequest request, HttpServletResponse response)
+	public BetagoActionForward execute(HttpServletRequest request, HttpServletResponse response)
 			throws ClassNotFoundException, SQLException, IOException {
-		BoardDAO dao =BoardDAO.getInstance();
+		BetagoDAO dao =BetagoDAO.getInstance();
 
 		return null;
 	}

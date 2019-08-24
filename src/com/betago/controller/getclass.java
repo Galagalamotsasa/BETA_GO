@@ -8,16 +8,16 @@ import java.util.List;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.betago.dao.BoardDAO;
+import com.betago.dao.BetagoDAO;
 import com.betago.dto.ClassVO;
 import com.google.gson.Gson;
 
-public class getclass implements IBoardAction {
+public class getclass implements IBetagoAction {
 
 	@Override
-	public BoardActionForward execute(HttpServletRequest request, HttpServletResponse response)
+	public BetagoActionForward execute(HttpServletRequest request, HttpServletResponse response)
 			throws ClassNotFoundException, SQLException, IOException {
-		BoardDAO dao = BoardDAO.getInstance();
+		BetagoDAO dao = BetagoDAO.getInstance();
 		List<ClassVO> lst =dao.viewClass();
 		Gson gson = new Gson();
 		String sb="";

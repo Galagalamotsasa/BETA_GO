@@ -7,18 +7,18 @@ import java.sql.SQLException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.betago.dao.BoardDAO;
+import com.betago.dao.BetagoDAO;
 
-public class boardUpdateAction implements IBoardAction {
+public class boardUpdateAction implements IBetagoAction {
 
 	@Override
-	public BoardActionForward execute(HttpServletRequest request, HttpServletResponse response)
+	public BetagoActionForward execute(HttpServletRequest request, HttpServletResponse response)
 			throws ClassNotFoundException, SQLException, IOException {
 		int bno = Integer.parseInt("boardno");
 		String title = request.getParameter("board_title");
 		String content = request.getParameter("board_content");
 		String img = request.getParameter("img");
-		BoardDAO dao = BoardDAO.getInstance();
+		BetagoDAO dao = BetagoDAO.getInstance();
 		PrintWriter out = response.getWriter();
 		int result = dao.boardUpdate(title, content,img);
 		if(result ==1) {
@@ -31,7 +31,7 @@ public class boardUpdateAction implements IBoardAction {
 			out.print("<scritp> altert('변경 실패하였습니다.')");
 			out.print("</script>");
 		}
-		BoardActionForward forward = new BoardActionForward();
+		BetagoActionForward forward = new BetagoActionForward();
 		forward.setPath("./boardController.bo?mod=boardView&boardno="+bno);
 		forward.setRedirect(true);
 		return null;

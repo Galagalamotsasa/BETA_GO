@@ -1,6 +1,6 @@
 package com.betago.controller;
 
-public class BoardActionForward {
+public class BetagoActionForward {
 	private boolean isRedirect = false;
 	private String path = null;
 	

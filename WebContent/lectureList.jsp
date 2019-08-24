@@ -1,13 +1,25 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+		<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<link rel="stylesheet" href="css/common.css">
-<link rel="stylesheet" href="css/lectureList.css">
-<link rel="stylesheet" href="css/bot.css">
+<link href="css/bootstrap.min.css" type="text/css" rel="stylesheet" />
+
+
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+<script src="js/jquery.min.js"></script>
+<script src="js/bootstrap.min.js"></script>
+<!-- jQuery 1.8 or later, 33 KB -->
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+
+<link rel="stylesheet" href="./css/common.css">
+<link rel="stylesheet" href="./css/lectureList.css">
+<link rel="stylesheet" href="./css/bot.css">
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
 <link rel="stylesheet"
@@ -89,39 +101,76 @@ background-color: #358da1;
 color: #fff;
 
 }
+#dropdownMenuButton{
+border:0;
+outline:0;
+color:white;
+background-color:#85B8CB;
+adding-right: .5rem;
+    padding-left: .5rem;
+
+}
 </style>
 </head>
 
 <body>
-	<div class="wrap">
-		<div class="header">
-			<div class="gnbWrap">
-				<div class="inner">
-					<h1>
-						<a href="../index.html"> <img class="logo_mo"
-							src="../asset/img/logo_mo.png" alt="복지GO"> <img
-							class="logo_pc" src="../asset/img/logo_pc.png" alt="복지GO">
-						</a>
-					</h1>
-					<button class="gnbOpen">
-						<span>모바일메뉴열기</span>
+<header style="background-color: #85B8CB">
+		<!-- Navigation -->
+		<div>
+			<nav class="navbar navbar-expand-lg navbar-dark static-top">
+				<div class="container" style="background: #85B8CB">
+					<a class="navbar-brand" href="./Home.jsp"> <img src="./img/logo_mo1.png"
+						alt="">
+					</a>
+					<button class="navbar-toggler" type="button" data-toggle="collapse"
+						data-target="#navbarResponsive" aria-controls="navbarResponsive"
+						aria-expanded="false" aria-label="Toggle navigation">
+						<span class="navbar-toggler-icon"></span>
 					</button>
-					<nav class="gnb">
-						<div class="gnbLogo">
-							<a href="#"> <img class="logo_mo"
-								src="../asset/img/logo_mo.png" alt="복지GO">
-							</a>
-						</div>
-						<ul class="depth1">
-							<li><a href="/sub/tema_list.html">게시판</a></li>
-							<li><a href="/sub/area_list.html">강의 찾기</a></li>
-							<li><a href="/sub/myLocation.html">내주변 찾기</a></li>
+					<div class="collapse navbar-collapse" id="navbarResponsive">
+						<ul class="navbar-nav ml-auto">
+						
+						<c:choose>
+							<c:when test="${sessionScope.userid !=null }">
+							<li class="nav-item active"><a class="nav-link" href="#">마이페이지
+									<span class="sr-only">(current)</span>
+							</a></li>
+							</c:when>
+							
+							<c:when test="${sessionScope.userid ==null }">
+							<li class="nav-item active"><a class="nav-link" href="./login.jsp">로그인/회원가입
+									<span class="sr-only">(current)</span>
+							</a></li>
+							</c:when>
+							</c:choose>
+							
+							<li class="nav-item"><a class="nav-link" href="#" style="color:white">BETA-GO란</a>
+							</li>
+							<li class="nav-item"><a class="nav-link" href="#" style="color:white">묶음강좌</a>
+							</li>
+							<li class="nav-item"><a class="nav-link" href="./lectureList.jsp" style="color:white">강좌찾기</a>
+							</li>
+							<div class="dropdown" >
+								<button class="dropdown-toggle" type="button"
+									id="dropdownMenuButton" data-toggle="dropdown"
+									aria-haspopup="true" aria-expanded="false">게시판</button>
+								<div class="dropdown-menu" aria-labelledby="dropdownMenuButton" style="background-color:#85B8CB;">
+									<a class="dropdown-item" href="#" style="color:white">공지사항</a> <a
+										class="dropdown-item" href="#" style="color:white">자유게시판</a> <a
+										class="dropdown-item" href="#" style="color:white">모두의 코딩</a>
+										<a
+										class="dropdown-item" href="#" style="color:white">FAQ</a>
+								</div>
+							</div>
 						</ul>
-					</nav>
-					<button class="gnbClose">모바일메뉴닫기</button>
+					</div>
 				</div>
-			</div>
+			</nav>
 		</div>
+		
+	</header>
+	<div class="wrap">
+		
 		<div class="searchWrap">
 			<div class="inner">
 				<!--                <form action="#" method="get">-->
@@ -251,7 +300,7 @@ color: #fff;
 					<div>Copyright &copy; 오벤져스. All Right Reserved.</div>
 				</div>
 			</div>
-			<a href="#" class="topButton">TOP</a>
+
 		</div>
 	</div>
 	<script src="https://code.jquery.com/jquery-3.4.0.min.js"></script>

@@ -4,6 +4,7 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 
 import javax.naming.NamingException;
+
 public class DBManagement {
 
 

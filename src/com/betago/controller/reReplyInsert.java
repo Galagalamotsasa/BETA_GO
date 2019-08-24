@@ -6,13 +6,13 @@ import java.sql.SQLException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.betago.dao.BoardDAO;
+import com.betago.dao.BetagoDAO;
 import com.betago.dto.BoardVO;
 
-public class reReplyInsert implements IBoardAction {
+public class reReplyInsert implements IBetagoAction {
 
 	@Override
-	public BoardActionForward execute(HttpServletRequest request, HttpServletResponse response)
+	public BetagoActionForward execute(HttpServletRequest request, HttpServletResponse response)
 			throws ClassNotFoundException, SQLException, IOException {
 		System.out.println("대댓글");
 		int board_a_no = Integer.parseInt(request.getParameter("board_a_no"));
@@ -21,9 +21,9 @@ public class reReplyInsert implements IBoardAction {
 		String board_content = request.getParameter("reply");
 		System.out.println(board_a_no+"/" +board_content);
 		BoardVO vo = new BoardVO(account_id, board_content, board_a_no,board_a_reply);
-		BoardDAO dao = BoardDAO.getInstance();
+		BetagoDAO dao = BetagoDAO.getInstance();
 		dao.reReplyInsert(vo);
-		BoardActionForward forward = new BoardActionForward();
+		BetagoActionForward forward = new BetagoActionForward();
 		forward.setRedirect(true);
 		forward.setPath("./boardController.bo?mod=boardView&boardno="+board_a_no);
 	

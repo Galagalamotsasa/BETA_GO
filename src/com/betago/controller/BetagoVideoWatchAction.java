@@ -1,5 +1,7 @@
 package com.betago.controller;
 
+import java.sql.SQLException;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
@@ -9,7 +11,7 @@ import com.betago.dto.VideoJoinCategory;
 public class BetagoVideoWatchAction implements IBetagoAction {
 
 	@Override
-	public BetagoActionForward execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
+	public BetagoActionForward execute(HttpServletRequest request, HttpServletResponse response) throws ClassNotFoundException, SQLException {
 		BetagoDAO dao = BetagoDAO.getInstance();
 		
 		int videono = Integer.parseInt(request.getParameter("videono"));

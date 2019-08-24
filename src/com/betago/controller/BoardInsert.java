@@ -8,18 +8,16 @@ import javax.servlet.ServletContext;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.betago.dao.BoardDAO;
+import com.betago.dao.BetagoDAO;
 import com.betago.dto.BoardVO;
 import com.oreilly.servlet.MultipartRequest;
 import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
 
-public class BoardInsert implements IBoardAction {
+public class BoardInsert implements IBetagoAction {
 
 	@Override
-	public BoardActionForward execute(HttpServletRequest request, HttpServletResponse response)
-			throws ClassNotFoundException, SQLException {
-		System.out.println("insert ÇÏ·¯ ¿Ô´Â°¡");
-		// »çÁø Ã³¸®
+	public BetagoActionForward execute(HttpServletRequest request, HttpServletResponse response) throws ClassNotFoundException, SQLException
+ {
 		String saveFileFolder = "uploads";
 		ServletContext context = request.getServletContext();
 		String upfilePath = context.getRealPath(saveFileFolder);
@@ -34,7 +32,7 @@ public class BoardInsert implements IBoardAction {
 			mr = null;
 		}
 		
-		BoardDAO dao = BoardDAO.getInstance();
+		BetagoDAO dao = BetagoDAO.getInstance();
 		
 		
 		System.out.println("boardInsert");
@@ -60,14 +58,14 @@ public class BoardInsert implements IBoardAction {
 			PrintWriter out = response.getWriter();
 			dao.insertBoard(bvo);
 			out.println("<script>");
-			out.println("alert('±Û µî·Ï ¿Ï·â!')");
+			out.println("alert('ï¿½ï¿½ ï¿½ï¿½ï¿½ ï¿½Ï·ï¿½!')");
 			out.println("</script");
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		
-		BoardActionForward forward = new BoardActionForward();
+		BetagoActionForward forward = new BetagoActionForward();
 		forward.setRedirect(true);
 		forward.setPath("./board_wirte.jsp");
 		

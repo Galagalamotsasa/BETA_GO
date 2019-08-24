@@ -5,37 +5,55 @@
 <html>
 <head>
 <meta charset="UTF-8">
-
 <title>Insert title here</title>
-</head>
+
+
+<link href="./css/common.css" type="text/css" rel="stylesheet" />
 <link href="./css/bootstrap.min.css" type="text/css" rel="stylesheet" />
 
 
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
-<script src="./js/jquery.min.js"></script>
-<script src="./js/bootstrap.min.js"></script>
-<!-- jQuery 1.8 or later, 33 KB -->
-<script
-	src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
-
-<!-- Fotorama from CDNJS, 19 KB -->
-<link
-	href="https://cdnjs.cloudflare.com/ajax/libs/fotorama/4.6.4/fotorama.css"
-	rel="stylesheet">
-<script
-	src="https://cdnjs.cloudflare.com/ajax/libs/fotorama/4.6.4/fotorama.js"></script>
-
-
+<script src="js/jquery.min.js"></script>
+<script src="js/bootstrap.min.js"></script>
 <style>
-.carousel-item {
-	height: 65vh;
-	min-height: 350px;
-	background: no-repeat center center scroll;
-	-webkit-background-size: cover;
-	-moz-background-size: cover;
-	-o-background-size: cover;
-	background-size: cover;
+.headline {
+	color: white;
+}
+
+h2 {
+	text-align: center;
+	color: #85B8CB;
+	padding: 15px;
+}
+
+#logincontents {
+	text-align: center;
+	margin: 30px;
+}
+
+.logintext {
+	width: 70%;
+	max-width: 500px;
+	height: 45px;
+	padding: 20px;
+	margin: 10px auto;
+	display: block;
+	border: 2px solid lightgray;
+}
+
+#loginbutton {
+	background-color: #85B8CB;
+	width: 110px;
+	height: 40px;
+	margin: 20px;
+	text-align: center;
+	line-height: 40px;
+	border-radius: 8px;
+	color: white;
+	display: inline-block;
+	font-size: 17px;
+	padding-bottom: 15px;
 }
 #dropdownMenuButton{
 border:0;
@@ -46,76 +64,14 @@ adding-right: .5rem;
     padding-left: .5rem;
 
 }
+#logout{
+text-align: center;}
 </style>
-<script type="text/javascript">
-	$(document).ready(function() {
-		getEvent();
-		getClass();
-	});
+</head>
 
-	function getClass() {
-		$
-				.ajax({
-					type : "GET",
-					url : "boardController.bo?mode=getclass.bo",
-					dataType : "json",
-					success : function(data) {
-						console.log(data);
-						var output = "";
-						for (var i = 0; i < data.length; i++) {
-							output += '<div class="col-lg-3 col-md-6 mb-4"><div class="card h-100">';
-							output += '<img class="card-img-top" src='
-									+data[i].class_img
-									+' alt="">';
-							output += '<div class="card-body"><h4 class="card-title">'
-									+ data[i].class_title
-									+ '</h4><p class="card-text">'
-									+ data[i].class_object + '</p></div>';
-							output += '<div class="card-footer"><a href="#" class="btn btn-primary">수강 신처하러 가기</a></div></div></div>'
-						}
-						$("#class_output").append(output);
-					},
-					error : function(res) {
-						console.log(res.responseText);
-					},
-					complete : function() {
-
-					}
-				}); // ajax 끝
-	}
-
-	function getEvent() {
-		$.ajax({
-			type : "GET",
-			url : "boardController.bo?mode=getevent.bo",
-			dataType : "json",
-			success : function(data) {
-				console.log(data);
-				var output = "";
-				for (var i = 0; i < data.length; i++) {
-					output += '<img src="'+data[i].board_img+'"/>';
-
-				}
-				$(".fotorama").append(output); // 포토라마에 이미지 적재
-				$('.fotorama').fotorama(); // 포토라마 초기화
-			},
-			error : function(res) {
-				console.log(res.responseText);
-			},
-			complete : function() {
-
-			}
-		}); // ajax 끝
-
-	}
-</script>
-<style>
-</style>
 
 <body>
-
-
-	<header style="background-color: #85B8CB">
+<header style="background-color: #85B8CB">
 		<!-- Navigation -->
 		<div>
 			<nav class="navbar navbar-expand-lg navbar-dark static-top">
@@ -139,7 +95,7 @@ adding-right: .5rem;
 							</c:when>
 							
 							<c:when test="${sessionScope.userid ==null }">
-							<li class="nav-item active"><a class="nav-link" href="./login.jsp">로그인/회원가입
+							<li class="nav-item active"><a class="nav-link" href="#">로그인/회원가입
 									<span class="sr-only">(current)</span>
 							</a></li>
 							</c:when>
@@ -171,21 +127,65 @@ adding-right: .5rem;
 		
 	</header>
 
+	<form action="./login.do?mode=login.bo" method="post">
+		<div class="section log">
 
-	<!-- /.container -->
-	<div id="carouselExampleIndicators" class="carousel slide"
-		data-ride="carousel">
+			<div class="login">
+				<c:if test="${sessionScope.login == null }">
+					<h2>Beta_Go 로그인</h2>
+
+					<div id="logincontents">
+						<input type="text" class="logintext"
+							placeholder="아이디는 5~20자로 기입하세요" name="account_id" required/> <input
+							type="text" class="logintext" placeholder="비밀번호는 5~20자로 기입하세요"
+							name="account_pwd" required/> <input type=submit id="loginbutton"
+							value="로그인" /> <input type=button id="loginbutton" onclick="location.href='./Account.jsp'"  value="회원가입" />
+					</div>
+				</c:if>
+				<!-- 로그인 했을 때의 정보 ------------------------------------------------------------>
+				<div id='logout'>
+					<c:if test="${sessionScope.login != null }">
+
+						<div>${sessionScope.login.account_id }님</div>
+
+						<button type="button" class="btn btn-info"
+							onclick="location.href='logout.do';">로그아웃</button>
+
+					</c:if>
+				</div>
 
 
-		<div class="fotorama" data-loop="true"></div>
+			</div>
+		</div>
+
+
+
+
+	</form>
+
+
+	<!--    <footer>-->
+	<div class="footer">
+		<div class="footer1">
+			<div class="inner">
+				<ul class="clearFix">
+					<li><a href=#>이용약관</a></li>
+					<li><a href=#>개인정보 처리방침</a></li>
+					<li><a href=#>오시는길</a></li>
+				</ul>
+			</div>
+		</div>
+		<div class="footer2">
+			<div class="inner">
+				<address>서울시 금천구 가산디지털2로 대륭테크노타운 3차</address>
+				<a href="tel:02.000.0000">문의전화 02)000-0000 </a>
+				<div>Copyright &copy; Beta_Go.</div>
+			</div>
+		</div>
 
 	</div>
+	<!--        </footer>-->
 
-
-
-	<!-- Page Features -->
-
-	<div id="class_output" class="row text-center"></div>
 
 </body>
 </html>

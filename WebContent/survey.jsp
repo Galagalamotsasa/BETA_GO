@@ -5,18 +5,16 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<link rel="stylesheet" href="css/slick.css">
-<link rel="stylesheet" href="css/common.css">
-<link href="css/bootstrap.min.css" type="text/css" rel="stylesheet" />
+
+<link href="./css/bootstrap.min.css" type="text/css" rel="stylesheet" />
+
+<link rel="stylesheet" href="./css/common.css">
+<link rel="stylesheet" href="./css/lectureList.css">
+<link rel="stylesheet" href="./css/bot.css">
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
-<script src="js/jquery.min.js"></script>
-<script src="js/bootstrap.min.js"></script>
-<link
-	href="https://cdnjs.cloudflare.com/ajax/libs/fotorama/4.6.4/fotorama.css"
-	rel="stylesheet">
-<script
-	src="https://cdnjs.cloudflare.com/ajax/libs/fotorama/4.6.4/fotorama.js"></script>
+<script src="./js/jquery.min.js"></script>
+<script src="./js/bootstrap.min.js"></script>
 <style>
 .swiper-container {
 	max-width: 1920px;
@@ -27,169 +25,6 @@
 	width: 100%;
 }
 
-.section {
-	text-align: center;
-}
-
-.section h3 {
-	margin-top: 35px;
-	font-size: 22px;
-	font-weight: 400;
-}
-
-.section h3+p {
-	margin-top: 10px;
-}
-
-.section .single-item .slick-arrow {
-	z-index: 1;
-	position: absolute;
-	top: 50%;
-	width: 50px;
-	height: 50px;
-	margin-top: -25px;
-	border: none;
-	font-size: 0;
-	color: transparent;
-	background-color: transparent;
-	background: url(./asset/img/arrow.png) no-repeat center center;
-	background-size: 50px;
-}
-
-.section .single-item .slick-dots {
-	position: absolute;
-	bottom: 20px;
-	width: 100%;
-}
-
-.section .single-item .slick-dots li {
-	display: inline-block;
-	margin: 0 7px;
-	font-size: 0;
-	color: transparent;
-}
-
-.section .single-item .slick-dots li button {
-	width: 10px;
-	height: 10px;
-	background-color: #fff;
-	border: none;
-	border-radius: 50%;
-}
-
-.section .single-item .slick-dots li.slick-active button {
-	background-color: #abc5d6;
-}
-
-.section .single-item .item {
-	height: 500px;
-	background-repeat: no-repeat;
-	background-position: center center;
-	background-size: cover;
-}
-
-.section .single-item .slick-prev {
-	left: 0;
-	transform: rotate(180deg);
-}
-
-.section .single-item .slick-next {
-	right: 0;
-}
-
-.section .bestList {
-	margin-top: 40px;
-}
-
-.section .bestList .listItem {
-	float: left;
-	overflow: hidden;
-	width: 48%;
-	height: 200px;
-	margin: 10px 1% 0;
-	line-height: 200px;
-}
-
-.section .bestList .listItem a {
-	position: relative;
-	display: block;
-	height: 100%;
-}
-
-.section .bestList .listItem a .imgWrap {
-	position: absolute;
-	top: 0;
-	right: 0;
-	bottom: 0;
-	left: 0;
-	background-repeat: no-repeat;
-	background-position: center center;
-	background-size: cover;
-	transition: transform .2s;
-}
-
-.section .bestList .listItem a:hover .imgWrap, .section .bestList .listItem a:focus .imgWrap
-	{
-	transform: scale(1.1);
-}
-
-.section .bestList .listItem a .txtWrap {
-	position: absolute;
-	top: 0;
-	right: 0;
-	bottom: 0;
-	left: 0;
-	background-color: rgba(0, 0, 0, .5);
-	color: #fff;
-	transition: background .2s;
-}
-
-.section .bestList .listItem a:hover .txtWrap, .section .bestList .listItem a:focus .txtWrap
-	{
-	background-color: rgba(0, 0, 0, .2);
-}
-
-.section .bestList .listItem img {
-	width: 100%;
-	display: block;
-}
-
-.section .bestList .listItem p {
-	display: none;
-}
-
-@media all and (min-width:1024px) {
-	.section h3 {
-		margin-top: 70px;
-		font-size: 28px;
-	}
-	.section .bestList .listItem {
-		width: 22%;
-		height: 264px;
-		margin: 10px 0 0 3%;
-		line-height: 1;
-	}
-	.section .bestList .listItem a>.txtWrap {
-		padding: 30px 20px;
-	}
-	.section .bestList .listItem strong:after {
-		content: '';
-		display: block;
-		width: 40px;
-		height: 2px;
-		margin: 15px auto 30px;
-		background-color: #fff;
-	}
-	.section .bestList .listItem p {
-		display: block;
-	}
-	.section .bestList li:first-child {
-		margin-left: 0;
-	}
-}
-.section {
-margin-top: 50px;
-}
 
 footer {
 	width: 100%;
@@ -217,49 +52,78 @@ footer ul li a div {
 	line-height: 0px;
 	color: #000;
 }
+#dropdownMenuButton{
+border:0;
+outline:0;
+color:white;
+background-color:#85B8CB;
+adding-right: .5rem;
+    padding-left: .5rem;
+
+}
 </style>
 <script>
 
 </script>
 </head>
 <body>
-	<div class="wrap">
-		<div class="header">
-			<div class="gnbWrap">
-				<div class="inner">
-					<h1>
-						<a href="./index.html"> <img class="logo_mo"
-							src="./asset/img/logo_mo.png" alt="복지GO"> <img
-							class="logo_pc" src="./asset/img/logo_pc.png" alt="복지GO">
-						</a>
-					</h1>
-					<button class="gnbOpen">
-						<span>모바일메뉴열기</span>
+	<header style="background-color: #85B8CB">
+		<!-- Navigation -->
+		<div>
+			<nav class="navbar navbar-expand-lg navbar-dark static-top">
+				<div class="container" style="background: #85B8CB">
+					<a class="navbar-brand" href="Home.jsp"> <img src="./img/logo_mo1.png"
+						alt="">
+					</a>
+					<button class="navbar-toggler" type="button" data-toggle="collapse"
+						data-target="#navbarResponsive" aria-controls="navbarResponsive"
+						aria-expanded="false" aria-label="Toggle navigation">
+						<span class="navbar-toggler-icon"></span>
 					</button>
-					<nav class="gnb">
-						<div class="gnbLogo">
-							<a href="#"> <img class="logo_mo"
-								src="./asset/img/logo_mo.png" alt="복지GO">
-							</a>
-						</div>
-						<ul class="depth1">
-							<li><a href="lectureList.jsp">강의 목록 보기</a></li>
-							<li><a href="/sub/area_list.html">지역별 찾기</a></li>
-							<li><a href="/sub/myLocation.html">설문조사</a></li>
+					<div class="collapse navbar-collapse" id="navbarResponsive">
+						<ul class="navbar-nav ml-auto">
+						
+						<c:choose>
+							<c:when test="${sessionScope.userid !=null }">
+							<li class="nav-item active"><a class="nav-link" href="#">마이페이지
+									<span class="sr-only">(current)</span>
+							</a></li>
+							</c:when>
+							
+							<c:when test="${sessionScope.userid ==null }">
+							<li class="nav-item active"><a class="nav-link" href="./login.jsp">로그인/회원가입
+									<span class="sr-only">(current)</span>
+							</a></li>
+							</c:when>
+							</c:choose>
+							
+							<li class="nav-item"><a class="nav-link" href="#" style="color:white">BETA-GO란</a>
+							</li>
+							<li class="nav-item"><a class="nav-link" href="#" style="color:white">묶음강좌</a>
+							</li>
+							<li class="nav-item"><a class="nav-link" href="./lectureList.jsp" style="color:white">강좌찾기</a>
+							</li>
+							<div class="dropdown" >
+								<button class="dropdown-toggle" type="button"
+									id="dropdownMenuButton" data-toggle="dropdown"
+									aria-haspopup="true" aria-expanded="false">게시판</button>
+								<div class="dropdown-menu" aria-labelledby="dropdownMenuButton" style="background-color:#85B8CB;">
+									<a class="dropdown-item" href="#" style="color:white">공지사항</a> <a
+										class="dropdown-item" href="#" style="color:white">자유게시판</a> <a
+										class="dropdown-item" href="#" style="color:white">모두의 코딩</a>
+										<a
+										class="dropdown-item" href="#" style="color:white">FAQ</a>
+								</div>
+							</div>
 						</ul>
-					</nav>
-					<button class="gnbClose">모바일메뉴닫기</button>
+					</div>
 				</div>
-			</div>
+			</nav>
 		</div>
-		<div class="searchWrap">
-			<div class="inner">
-				<div class="search">
-					<input type="text" class="searchText" placeholder="검색어를 입력해 주세요.">
-					<input type="button" class="searchButton" onclick="Magnifying();">
-				</div>
-			</div>
-		</div>
+		
+	</header>
+	<div class="wrap">
+
 
 <div class="container">
 		<div class="section">

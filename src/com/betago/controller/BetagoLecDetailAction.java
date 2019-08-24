@@ -1,5 +1,8 @@
 package com.betago.controller;
 
+import java.sql.SQLException;
+
+import javax.naming.NamingException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
@@ -9,7 +12,7 @@ import com.betago.dto.LecDetailSelectByHistory;
 public class BetagoLecDetailAction implements IBetagoAction {
 
 	@Override
-	public BetagoActionForward execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
+	public BetagoActionForward execute(HttpServletRequest request, HttpServletResponse response) throws ClassNotFoundException, SQLException, NamingException {
 		BetagoDAO dao = BetagoDAO.getInstance();
 		
 		int historyno = Integer.parseInt(request.getParameter("historyno"));

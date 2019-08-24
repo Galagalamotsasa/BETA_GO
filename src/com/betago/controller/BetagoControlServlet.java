@@ -1,7 +1,7 @@
 package com.betago.controller;
 
 import java.io.IOException;
-import java.io.PrintWriter;
+import java.sql.SQLException;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -11,110 +11,163 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 /**
- * Servlet implementation class BetagoControlServlet
+ * Servlet implementation class BoardController
  */
-
-@WebServlet({"/BetagoControlServlet", "/BetagoController.bo"})
-
-public class BetagoControlServlet extends HttpServlet {
+@WebServlet({ "/BoardController", "/boardController.bo" })
+public class BoardController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-       
-    /**
-     * @see HttpServlet#HttpServlet()
-     */
-    public BetagoControlServlet() {
-        super();
-        // TODO Auto-generated constructor stub
-    }
 
 	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
+	 * @see HttpServlet#HttpServlet()
 	 */
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		doPro(request, response);
+	public BoardController() {
+		super();
+		// TODO Auto-generated constructor stub
 	}
 
 	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
+	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse
+	 *      response)
 	 */
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		doPro(request, response);
+	protected void doGet(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+		doProcess(request, response);
 	}
 
-	protected void doPro(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		System.out.println("BetagoControlServlet 호출");
-		
-		String mode = request.getParameter("mode");
-		System.out.println("mode : " + mode);
-		
-		BetagoActionForward forward=null;
-		IBetagoAction action=null;
-		
-		if (mode != null) {
-			System.out.println("mode : " + mode);
-			
-			if (mode.equals("lecDetail.bo")) {	
-				System.out.println("강의 상세 페이지 보기");
-				
-				action = new BetagoLecDetailAction();
-				
+	/**
+	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse
+	 *      response)
+	 */
+	protected void doPost(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+		doProcess(request, response);
+	}
+
+	protected void doProcess(HttpServletRequest request, HttpServletResponse response)
+			throws IOException, ServletException {
+		System.out.println("controller�떒 �룄李�");
+		request.setCharacterEncoding("utf-8");
+		String qParam = request.getParameter("mode");
+		System.out.println("mod" + qParam);
+
+		BoardActionForward forward = null;
+		IBoardAction action = null;
+
+		if (qParam != null) {
+			// 게시물 등록
+			if (qParam.equals("board_insert.bo")) {
+				action = new BoardInsert();
 				try {
 					forward = action.execute(request, response);
-				} catch (Exception e) {
+				} catch (ClassNotFoundException | SQLException e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
 				}
-			} else if(mode.equals("getChapterList.bo")) {
-				System.out.println("챕터리스트 JSON으로 불러오기");
-				
-				action = new BetagoChapterListJSON();
-				
+				// 게시물 상세페이지
+			} else if (qParam.equals("boardView")) {
+				action = new BoardViewAction();
 				try {
 					forward = action.execute(request, response);
-				} catch (Exception e) {
+				} catch (ClassNotFoundException | SQLException e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
 				}
-			} else if(mode.equals("chapterDesc.bo")) {
-				System.out.println("챕터 상세 페이지 보기");
-				
-				action = new BetagoChapterDescAction();
-				
+			}
+			// 게시물 삭제
+			else if (qParam.equals("delBoard")) {
+				action = new BoardDelAction();
 				try {
 					forward = action.execute(request, response);
-				} catch (Exception e) {
+				} catch (ClassNotFoundException | SQLException e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
 				}
-			} else if(mode.equals("videoWatch.bo")) {
-				System.out.println("클릭한 비디오 보기");
+				// 댓글 입력
+			} else if (qParam.equals("replyInsert")) {
+				action = new replyInsertAction();
+				try {
+					forward = action.execute(request, response);
+				} catch (ClassNotFoundException | SQLException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+			}
+			// 대댓글 처리
+			else if (qParam.equals("reReplyInsert")) {
+				action = new reReplyInsert();
+				try {
+					forward = action.execute(request, response);
+				} catch (ClassNotFoundException | SQLException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+			}
+			// 게시물 수정하기위해서 리스트 불러옴
+			else if (qParam.equals("boardUpdate")) {
+				action = new boardUpdateView();
+				try {
+					forward = action.execute(request, response);
+				} catch (ClassNotFoundException | SQLException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+
+			} else if (qParam.equals("boardupdates")) {
+				action = new boardUpdateAction();
+				try {
+					forward = action.execute(request, response);
+				} catch (ClassNotFoundException | SQLException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+			} else if (qParam.equals("lastsBoard")) {
+				action = new boardLast();
+				try {
+					forward = action.execute(request, response);
+				} catch (ClassNotFoundException | SQLException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
 				
-				action = new BetagoVideoWatchAction();
+				// 강의 가져오기
+			} else if(qParam.equals("getclass.bo")) {
+				action = new getclass();
+				try {
+					forward = action.execute(request, response);
+				} catch (ClassNotFoundException | SQLException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+			}else if(qParam.equals("getevent.bo")) {
+				action = new getevent();
+				try {
+					forward = action.execute(request, response);
+				} catch (ClassNotFoundException | SQLException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
 			}
 			
-			// --------------- 페이지 이동 -------------------------------------
-			
-			if (forward != null) {
-				if (forward.isRedirect()) { // 리다이렉트 해야 할때 - forward.isRedirect 값이 참
-					response.sendRedirect(forward.getPath()); // forward 객체의 path 경로로 redirect
-				} else { // 포워딩 해야 할 때 - forward.isRedirect 값이 거짓
+			else {
+				action = new BoardInsert();
+
+				try {
+					forward = action.execute(request, response);
+				} catch (ClassNotFoundException | SQLException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+			}
+
+			if (forward != null) { // redirect true
+				if (forward.isRedirect()) {
+					response.sendRedirect(forward.getPath());
+				} else { // forward false
 					RequestDispatcher dispatcher = request.getRequestDispatcher(forward.getPath());
-					dispatcher.forward(request, response); // forward 객체의 path 경로로 forward
+					dispatcher.forward(request, response);
 				}
 			}
-			
-		} else {
-			response.setContentType("text/html; charset=utf-8");
-			PrintWriter out = response.getWriter();
-			
-			out.print("<script>");
-			out.print("alert('잘못된 요청입니다!');");
-			out.print("location.href='Home.jsp';");
-			out.print("</script>");
 		}
-		
-		
-		
+
 	}
-	
 }

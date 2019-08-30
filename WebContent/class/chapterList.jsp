@@ -18,7 +18,6 @@
 
 <style>
 
-
 .swiper-container {
 	max-width: 1920px;
 	margin: 0 auto;
@@ -213,34 +212,57 @@ footer ul li a div {
 }
 </style>
 <script>
+let button = true;
+let loadcnt = 0;
 $(document).ready(function() {
-		getChapterList(); // 챕터 리스트 불러오기
+		//getChapterList(); // 챕터 리스트 불러오기
+		$("#chapterList").css("display", "none");
 	});
 	
 function getChapterList() {
-	$.ajax({ 
-		type : "GET",
-		url : "BetagoController.bo?mode=getChapterList.bo&classno=${selectedLecture.class_no}",
-		dataType : "json", // 서버에서 반환되는 데이터 타입
-		success : function(data) {
-			console.log(data);
-			var output = "<table class='table table-hover table-striped'>";
-			output += "<thead><tr><th>회차</th><th>제목</th><th>목표</th><th>시작일</th><th>종료일</th></tr></thead>"
-			for (var i = 0; i < data.length; i++) {
-				output += "<tr><td>" + (i+1) + "</td><td><a href='./BetagoController.bo?mode=chapterDesc.bo&chapterno=" + data[i].chapter_no + "'>" + data[i].chapter_title + "</a></td><td>" + data[i].chapter_object + "</td><td>" + data[i].chapter_startdate  + "</td><td>" + data[i].chapter_enddate + "</td></tr>";
-			}
-			output += "</table>";
-			
-			
-			$("#chapterList").append(output);
-		},
-		error : function(res) {
-			console.log(res.responseText);
-		},
-		complete : function() {
-			
+	
+	
+	if (button == true) {
+		$("#chapterList").css("display", "block");
+		$("#btnList").css("background-color", "gray");
+		$("#btnList").css("border-color", "gray");
+		$("#btnList").html("강의 계획표 접기");
+		if (loadcnt == 0) {
+			$.ajax({ 
+				type : "GET",
+				url : "BetagoController.bo?mode=getChapterList.bo&classno=${selectedLecture.class_no}",
+				dataType : "json", // 서버에서 반환되는 데이터 타입
+				success : function(data) {
+					console.log(data);
+					var output = "<table class='table table-hover table-striped'>";
+					output += "<thead><tr><th>회차</th><th>제목</th><th>목표</th><th>시작일</th><th>종료일</th></tr></thead>"
+					for (var i = 0; i < data.length; i++) {
+						output += "<tr><td>" + (i+1) + "</td><td><a href='./BetagoController.bo?mode=chapterDesc.bo&chapterno=" + data[i].chapter_no + "'>" + data[i].chapter_title + "</a></td><td>" + data[i].chapter_object + "</td><td>" + data[i].chapter_startdate  + "</td><td>" + data[i].chapter_enddate + "</td></tr>";
+					}
+					output += "</table>";
+					
+					
+					$("#chapterList").append(output);
+				},
+				error : function(res) {
+					console.log(res.responseText);
+				},
+				complete : function() {
+					console.log("데이터로딩");
+				}
+			}); // ajax 끝
 		}
-	}); // ajax 끝
+		
+		loadcnt = 1;
+		button = false;
+	} else if (button == false) {
+		$("#chapterList").css("display", "none");
+		$("#btnList").css("background-color", "#007bff");
+		$("#btnList").css("border-color", "#007bff");
+		$("#btnList").html("강의 계획표 펼치기");
+		button = true;
+	}
+	console.log(loadcnt);
 }
 </script>
 </head>
@@ -295,23 +317,18 @@ function getChapterList() {
 				<div class="jumbotron">
 					<div class="media">
 						<div class="media-left media-top">
-							<img src="img/3531474460_wrl2txTp_20190709050843.jpg" class="media-object"
-								style="width: 60px">
+							<img src="img/3531474460_wrl2txTp_20190709050843.jpg" class="media-object" style="width: 100%">
 						</div>
-						<div class="media-body">
+						<div class="media-body" style="margin-left:2%;">
 							<h4 class="media-heading"></h4>
-							<p>강사 : ${selectedLecture.user_name} </p>
-							<!-- <a href="#" class="videoLink" alt="동영상 링크"> <img
-								src="../img/default.jpg" class="img-thumbnail"
-								alt="동영상 썸네일"> -->
-							</a>
 							<h1>${selectedLecture.class_title }</h1>
+							<h6>${selectedLecture.class_startdate } ~ ${selectedLecture.class_enddate }</h6>
 							<p>강사 : ${selectedLecture.user_name} </p>
-							<p>
-								<button type="button" class="btn btn-primary">
-									<b>수강신청하기</b>
+							<div>
+								<button type="button" class="btn btn-primary" onclick="location.href='#'">
+									수강신청하기
 								</button>
-							</p>
+							</div>
 						</div>
 					</div>
 				</div>
@@ -324,6 +341,8 @@ function getChapterList() {
 				</div>
 				<div>
 					<h3>챕터</h3>
+					<div>* 챕터 제목을 클릭하시면 상세정보를 확인하실 수 있습니다.</div>
+					<button id="btnList" type="button" class="btn btn-primary btn-block" onclick="getChapterList();">강의 계획표 펼치기</button>
 					<p id="chapterList"></p>
 				</div>
 				<div>
@@ -354,6 +373,7 @@ function getChapterList() {
 					<p>※ 이수기준 총점 60점 이상</p>
 				</div>
 				
+				<div id="manInfo"></div>
 				
 			</div>
 		</div>
